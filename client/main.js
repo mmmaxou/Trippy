@@ -6,7 +6,7 @@ Template.queries.events({
     }
 });
 
-Template.hello.helpers({
+Template.main.helpers({
     cities : function() {
         return Cities.find();
     },
@@ -14,3 +14,6 @@ Template.hello.helpers({
         return Activities.find();
     }
 });
+Template.cities.helpers({
+    
+})

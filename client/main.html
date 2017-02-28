@@ -1,7 +1,6 @@
 <head>
     <title>Trippy</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
 </head>
 
 <body>
@@ -11,44 +10,16 @@
 </body>
 
 <template name="home">
-    <div class="carousel slide carousel-fade" data-ride="carousel">
-	<div class="carousel-inner" role="listbox">
-	    <div class="item active"></div>
-	    <div class="item"></div>
-	    <div class="item"></div>
-	    <div class="item"></div>
-	</div>
+    {{>navbar}}
+
+    <div class="slider">
+        <!-- Insert full screen slider with images HERE -->
+        <h1>SLOGAN</h1>
+        <p>DESCRIPTION OF WEBSITE</p>
     </div>
-    <div class="site-wrapper">
-	<div class="site-wrapper-inner">
-	    <div class="cover-container">
-		<div class="masthead clearfix">
-		    <div class="inner">
-			<h3 class="masthead-brand">Trippy</h3>
-			<nav>
-			    <ul class="nav masthead-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Destinations</a></li>
-				<li><a href="#">About</a></li>
-				<li><button class="btn btn-primary" id="loginButtons">{{>loginButtons}}</button></li>
-			    </ul>
-			</nav>
-		    </div>
-		</div>
-		<div class="inner cover">
-		    <h1 class="cover-heading">Welcome to Trippy</h1>
-		    <p class="lead">Discover your favorite & beautiful places to visit today!</p>
-		    <p class="lead">
-			<a href="#" class="btn btn-lg btn-default">Let's go!</a>
-		    </p>
-		</div>
-		<div class="mastfoot">
-		    <div class="inner">
-			<p>2017 Trippy. All Rights Reserved.</p>
-		    </div>
-		</div>
-	    </div>
-	</div>
+
+    <div class="container">
+        {{>citylist}}
     </div>
 </template>
 
@@ -62,40 +33,39 @@
 
 <template name="navbar">
     <nav class="navbar navbar-inverse navbar-static-top">
-	<div class="container">
-	    <div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		    <span class="sr-only">Toggle Navigation</span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="main.html">Trippy</a>
-	    </div>
-	    <div id="navbar" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
-		    <li><a href="main.html">Home</a></li>
-		    <li class="active"><a href="destinations.html">Destinations</a></li>
-		</ul>
-	    </div>
-	</div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Trippy</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 </template>
 
-<template name="hello">
-    <!--    Example Syntax for looping through the data -->
-
-    {{#each c in cities}}
-    <p>ID = {{c.name}}</p>
-    {{/each}}
-
-    <!--    
-    Data structure here :
-    http://cours.alfweb.net/intensiveweek/meteor/code6/data.js
-    -->
-    
+<template name="citylist">
+    <div class="grid">
+        {{#each c in cities}}
+        <div class="grid-item"><img src="{{c.picture}}" alt="City Picture"></div>
+        {{/each}}
+    </div>
 </template>
-  
+
 <template name="queries">
     <button class="btn btn-primary" id="fullfill">Fullfill</button>
 </template>
+
+<!--    
+Data structure here :
+http://cours.alfweb.net/intensiveweek/meteor/code6/data.js
+-->

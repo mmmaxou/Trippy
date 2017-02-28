@@ -1,14 +1,24 @@
 <head>
-    <title>Trippy - Home</title>
+    <title>Trippy</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
 </head>
 
 <body>
     {{>yield}}
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>
 
 <template name="home">
+    <div class="carousel slide carousel-fade" data-ride="carousel">
+	<div class="carousel-inner" role="listbox">
+	    <div class="item active"></div>
+	    <div class="item"></div>
+	    <div class="item"></div>
+	    <div class="item"></div>
+	</div>
+    </div>
     <div class="site-wrapper">
 	<div class="site-wrapper-inner">
 	    <div class="cover-container">
@@ -26,15 +36,15 @@
 		    </div>
 		</div>
 		<div class="inner cover">
-		    <h1 class="cover-heading">Cover your page.</h1>
-		    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+		    <h1 class="cover-heading">Welcome to Trippy</h1>
+		    <p class="lead">Discover your favorite & beautiful places to visit today!</p>
 		    <p class="lead">
-			<a href="#" class="btn btn-lg btn-default">Learn more</a>
+			<a href="#" class="btn btn-lg btn-default">Let's go!</a>
 		    </p>
 		</div>
 		<div class="mastfoot">
 		    <div class="inner">
-			<p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+			<p>2017 Trippy. All Rights Reserved.</p>
 		    </div>
 		</div>
 	    </div>
@@ -43,18 +53,11 @@
 </template>
 
 <template name="cities">
-    City
+
 </template>
 
 <template name="activities">
-    
-</template>
 
-<template name="container">
-    <div class="container">
-	{{>loginButtons}}
-	{{>queries}}
-    </div>
 </template>
 
 <template name="navbar">
@@ -78,18 +81,19 @@
 	</div>
     </nav>
 </template>
-    
+
 <template name="hello">
-    Hello.
-    My first template.    
-<!--    Example Syntax for looping through the data -->
+    <!--    Example Syntax for looping through the data -->
+
     {{#each c in cities}}
-        <p>ID = {{c.name}}</p>
+    <p>ID = {{c.name}}</p>
     {{/each}}
+
     <!--    
-Data structure here :
-http://cours.alfweb.net/intensiveweek/meteor/code6/data.js
--->   
+    Data structure here :
+    http://cours.alfweb.net/intensiveweek/meteor/code6/data.js
+    -->
+    
 </template>
   
 <template name="queries">

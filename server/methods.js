@@ -16,10 +16,11 @@ Meteor.methods({
 
 Meteor.methods({
     'initUploadServerForActivity': function (city, activity) {
-        var dirName = city.picture.slice(5, city.picture.lastIndexOf("/"));
+        var dirName = city.picture.slice(8, city.picture.lastIndexOf("/"));
+        console.log("DIRNAME : " + dirName)
         UploadServer.init({
             tmpDir: process.env.PWD + '/.uploads/tmp',
-            uploadDir: process.env.PWD + '/public/images/' + dirName,
+            uploadDir: process.env.PWD + '/public/images/' + dirName + "/activities/",
             checkCreateDirectories: true, //create the directories for you
             finished: function (req) {
                 var fileName = "/images/" + dirName + "/" + req.name;
@@ -28,6 +29,15 @@ Meteor.methods({
                 // If this is the first picture, you have update the city document by adding to its field 'activities'
                 // an object with the id, the name, the nature and the picture filename(this first one)
                 // You have also tu update the activity document by adding the filename to the array 'pictures'
+                console.log("ID :" + activity._id)
+                console.log("Filename :" + fileName)
+                Activities.update({
+                    _id : activity._id
+                }, {
+                    $push : {
+                        pictures : fileName
+                    }
+                })
             }
         });
     }

@@ -16,6 +16,15 @@ Template.citylist.helpers({
     }
 });
 
+Template.cities.helpers({
+    cities: function() {
+        return Cities.find();
+    },
+    activities: function() {
+        return Activities.find();
+    }
+});
+
 Template.citylist.events({
     'click #destAnchor': function(e){
         $('html, body').animate({
@@ -58,7 +67,7 @@ Template.formActivity.events({
         // find the document corresponding to the user (his id is Meteor.userId())
         // TODO
     
-        Test.insert(activity, function(err, objectId){
+        Activities.insert(activity, function(err, objectId){
             activity._id = objectId;
             Meteor.call("initUploadServerForActivity", city, activity);
         });

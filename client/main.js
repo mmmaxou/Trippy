@@ -17,25 +17,18 @@ Template.citylist.helpers({
 });
 
 Template.citylist.events({
-    'click *': function(){
-        $('.grid').isotope({
-            // options
-            itemSelector: '.grid-item',
-        });
-    },
     'click #destAnchor': function(){
         $('html, body').animate({
             scrollTop: $(".mainContent").offset().top
         }, 2000);
+    },
+    'load *': function(){
+        $('.grid').isotope({
+            // options
+            itemSelector: '.grid-item',
+        });
     }
 })
-
-Template.citylist.onCreated(function(){
-    $('.grid').isotope({
-        // options
-        itemSelector: '.grid-item',
-    });
-});
 
 Template.formActivity.events({
     'submit' (event) {

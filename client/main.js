@@ -50,6 +50,20 @@ Template.citylist.events({
             },
             itemSelector: '.grid-item',
         });
+        $('body').scrollspy({target: ".navbar", offset: 50});
+        $("#myNavbar a").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+
+                var hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+                    window.location.hash = hash;
+                });
+            }
+        });
     },
     'click #sort_az': function(){
         $('.grid').isotope({ 
@@ -150,7 +164,7 @@ Template.activities.events({
         const target = event.target;        
         comment.text = target.comment.value;
         comment.date = new Date();
-        
+
         Meteor.call("addComment", activity, comment);
         $('#sectionAdd').fadeOut();
         target.comment.value = "";        
@@ -159,7 +173,8 @@ Template.activities.events({
         if(Meteor.user() != null) {
             var activity = this;
             var user = Meteor.user();
-            Meteor.call("addLike", activity, user);
+            console.log(user)
+            Meteor.call("addLike", activity);
         } else {
             toastr.options = {
                 "positionClass": "toast-bottom-center",

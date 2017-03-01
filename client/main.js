@@ -24,9 +24,11 @@ Template.cities.helpers({
         return Activities.find();
     },
     isAnEvent: function(nature){
+        console.log("nature"+nature)
         return nature === "event";
     },
     isAPlace: function(nature){
+        console.log("nature"+nature)
         return nature === "place";        
     }
 });

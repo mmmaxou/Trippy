@@ -35,15 +35,25 @@
 		<div class="wrapperTextTitle">
 			<p>Places to visit</p>
 		</div>
-		<div class="grid">
-			<div class="grid-item">
-			
+		<div class="gridPlaces fix-it">
+			{{#each c in activities}}
+			<div class="place">
+				<div class="wrapperPlace">
+					<div class="imgPlace">
+						<img src="{{c.pictures.[0]}}" alt="c.name"/>
+						<div class="darkerPhoto"></div>
+					</div>
+					<div class="placeCaption">
+						{{c.name}}
+					</div>
+				</div>
 			</div>
+			{{/each}}
 		</div>
 	</div>
 	<div class="addCity">
 		<div class="wrapperTextTitle">
-			<p>Add a city</p>
+			<p>Add an Activity</p>
 		</div>
 		<div class="formAddCity">
 			{{>formActivity}}

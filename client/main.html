@@ -3,12 +3,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Trippy</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     </head>
     <body>
         {{>yield}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://unpkg.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
-</body>
+    </body>
 </template>
 
 <template name="home">
@@ -21,12 +22,23 @@
     </div>
 
     <div class="container mainContent">
-       <h2 id="dest">DESTINATIONS</h2>
+        <h2 id="dest">DESTINATIONS</h2>
         {{>citylist}}
     </div>
+
+    {{>footer}}
 </template>
 
 <template name="citylist">
+    <div class="filter">
+        <p>Filter By</p>
+        <ul class="nav nav-pills nav-justified">
+            <li id='sort_date' class="active"><a data-toggle="pill" href="#">Recently Added</a></li>
+            <li id='sort_az' class=''><a data-toggle="pill" href="#">A-Z</a></li>
+            <li id='sort_likes'><a data-toggle="pill" href="#">Likes</a></li>
+            <li id='sort_comments'><a data-toggle="pill" href="#">Most Commented</a></li>
+        </ul>
+    </div>
     <div class="grid">
         {{#each c in cities}}
         <div class="grid-item"><img src="{{c.picture}}" alt="City Picture"></div>

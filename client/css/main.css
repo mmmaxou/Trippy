@@ -1,15 +1,32 @@
 .slider {
     text-align: center;
     margin-top: 70px;
-    height: 1000px;
+    padding-top: 200px;
+    height: 600px;
     background-color: black;
     color: white;
+}
+
+.filter {
+    background: #e6e6e6;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.filter p {
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+.filter a {
+    color: black;
 }
 
 .grid-item {
     width: 50%;
 }
 
-
-
-
+.grid-item img {
+    width: 100%;
+}

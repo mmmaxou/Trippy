@@ -6,27 +6,25 @@
         <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     </head>
     <body>
+        {{>navbar}}
         {{>yield}}
+        {{>footer}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://unpkg.com/isotope-layout@3.0/dist/isotope.pkgd.min.js"></script>
     </body>
 </template>
 
 <template name="home">
-    {{>navbar}}
-
     <div class="slider">
         <!-- Insert full screen slider with images HERE -->
         <h1>SLOGAN</h1>
         <p>DESCRIPTION OF WEBSITE</p>
     </div>
-
     <div class="container mainContent">
-        <h2 id="dest">DESTINATIONS</h2>
+        <div id="dest"></div>
+        <h2>DESTINATIONS</h2>
         {{>citylist}}
     </div>
-
-    {{>footer}}
 </template>
 
 <template name="citylist">
@@ -45,7 +43,7 @@
             <div class="darkerCityPicture"></div>
             <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
             <div class="cityName">{{c.name}}</div>
-        </div></a>
+            </div></a>
         {{/each}}
         {{isotope}}
     </div>

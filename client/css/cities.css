@@ -80,11 +80,26 @@
 	height:300px;
 	width:100%;
 	overflow: hidden;
+	position:relative;
 }
 .darkerPhoto{
+	position:absolute;
+	top:0;
+	left:0;
 	height:300px;
 	width:100%;
 	background-color:rgba(0, 0, 0, 0.50);
+	z-index:2;
+	transition:1s all ease;
+}
+
+
+.darkerPhoto:hover{
+	background-color:rgba(0, 0, 0, 0);
+}
+
+.imgPlace:hover img{
+	transform: scale(1.2,1.2);
 }
 
 .imgPlace img{
@@ -92,6 +107,8 @@
 	transform:translateX(-50%);*/
 	width:100%;
 	height:100%;
+	z-index:1;
+	transition:1s all ease;
 }
 .placeCaption{
 	height:100px;

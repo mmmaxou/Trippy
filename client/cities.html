@@ -37,7 +37,7 @@
 		</div>
 		<div class="gridPlaces fix-it">
 			{{#each c in activities}}
-				
+				{{#if isAPlace c.nature}}				
 					<div class="place">
 						<div class="wrapperPlace">
 							<div class="imgPlace">
@@ -49,8 +49,8 @@
 								{{c.name}}
 							</div>
 						</div>
-					</div>
-				
+					</div>            
+				{{/if}}				
 			{{/each}}
 		</div>
 	</div>
@@ -59,8 +59,8 @@
 			<p>Activities to do</p>
 		</div>
 		<div class="gridPlaces fix-it">
-			{{#each c in activities nature}}{{#if isAPlace nature}}{{/if}}
-				{{#if isAnEvent}}
+			{{#each c in activities}}
+				{{#if isAnEvent c.nature}}
 					<div class="place">
 						<div class="wrapperPlace">
 							<div class="imgPlace">

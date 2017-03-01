@@ -9,7 +9,6 @@
         Place<input type="radio" name="nature" value="place" />
     
         <br> Add activity picture :
-        TODO
         
         <br> Add activity Description :
 <!--        <input type="text" name="description" /> -->
@@ -21,7 +20,8 @@
             <input type="date" name="dateend" placeholder="end date"/>
         </div>
         
-        <input type="submit" value="Create">
+        <input id="submit" type="submit" value="Create">
     </form>
+    {{> upload_bootstrap multiple=true}}
     
 </template>

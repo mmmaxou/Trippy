@@ -7,10 +7,18 @@ Router.route("/", {
     template: "home",
 });
 
+Router.route('/cities/:id', {
+    template: "cities",
+    data: function () {
+        var id = this.params.id;
+        return Cities.findOne({_id: id});
+    }    
+});
+
 Router.route('/activities/:id', {
     template: "activities",
     data: function () {
-        var id = this.params._id;
+        var id = this.params.id;
         return Activities.findOne({_id: id});
     }    
 });

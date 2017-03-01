@@ -22,6 +22,12 @@ Template.cities.helpers({
     },
     activities: function() {
         return Activities.find();
+    },
+    isAnEvent: function(nature){
+        return nature === "event";
+    },
+    isAPlace: function(nature){
+        return nature === "place";        
     }
 });
 
@@ -71,10 +77,6 @@ Template.formActivity.events({
             activity._id = objectId;
             Meteor.call("initUploadServerForActivity", city, activity);
         });
-                
-        //Go back home
-        //Change it later to go to the new page
-//        window.location.href = "../";
         
     },
 
@@ -84,8 +86,33 @@ Template.formActivity.events({
             $('#dates').fadeOut();            
         } else { $('#dates').fadeIn();}
     },
+});
+
+Template.cityAdd.events({
+    'submit form': function (event) {
+        event.preventDefault();
+        var city = {};       
+        
+        const target = event.target;
+        
+        city.name = target.name.value;
+        city.description = target.description.value;
+        city.coordinates = {
+            long : target.long.value,
+            lat : target.lat.value
+        }
+        
+        // show the upload panel 
+        $('.uploadPanel').fadeIn();
+        // hide the submit button 
+        $('#submit').fadeOut();
+        // find the document corresponding to the user (his id is Meteor.userId())
+        // TODO
     
-//    'click .uploadPanel' : function() {
-//        Meteor.call("initUploadServerForCity", "name", "lat", "long");
-//    }
+        Cities.insert(city, function(err, objectId){
+            city._id = objectId;
+            Meteor.call("initUploadServerForCity", city);
+        });
+        
+    }
 });

@@ -1,14 +1,20 @@
 Meteor.methods({
-    initUploadServerForCity: function (name, lat, long) {
+    initUploadServerForCity: function (city) {
         UploadServer.init({
             tmpDir: process.env.PWD + '/.uploads/tmp',
-            uploadDir: process.env.PWD + '/public/images/' + name,
+            uploadDir: process.env.PWD + '/public/images/' + city.name,
             checkCreateDirectories: true, //create the directories for you
             finished: function (req) {
-                var fileName = "/images/" + name + "/" + req.name;
+                var fileName = "/images/" + city.name + "/" + req.name;
                 // Insert the new city in the collection here
                 
-                Cities.insert()
+                Cities.update({
+                    _id : city._id
+                }, {
+                    $set : {
+                        picture : fileName
+                    }
+                })
             }
         });
     }
@@ -17,7 +23,6 @@ Meteor.methods({
 Meteor.methods({
     'initUploadServerForActivity': function (city, activity) {
         var dirName = city.picture.slice(8, city.picture.lastIndexOf("/"));
-        console.log("DIRNAME : " + dirName)
         UploadServer.init({
             tmpDir: process.env.PWD + '/.uploads/tmp',
             uploadDir: process.env.PWD + '/public/images/' + dirName + "/activities/",
@@ -37,7 +42,9 @@ Meteor.methods({
                     $push : {
                         pictures : fileName
                     }
-                })
+                })    
+                //Go back home
+                document.location.href = "/";
             }
         });
     }

@@ -13,13 +13,37 @@ Template.citylist.helpers({
     },
     activities: function() {
         return Activities.find();
+    },
+    isotope: function() {
+        $(document).ready(function(){
+            $('.grid').isotope({
+                // options
+                itemSelector: '.grid-item',
+            });
+        })
     }
+});
+
+Template.citylist.events({
+    'click *': function(){
+        $('.grid').isotope({
+            // options
+            itemSelector: '.grid-item',
+        });
+    }
+})
+
+Template.citylist.onCreated(function(){
+    $('.grid').isotope({
+        // options
+        itemSelector: '.grid-item',
+    });
 });
 
 Template.formActivity.events({
     'submit' (event) {
         event.preventDefault();
-        
+
         //Get value from form elements
         const target = event.target;
         const name = target.name.value;
@@ -56,5 +80,9 @@ Template.formActivity.events({
             console.log("true");
             $('#dates').fadeOut();            
         } else { $('#dates').fadeIn();}
+
+        //Clear form
+        target.text.value = '';
+        target.description.value = '';
     }
 })

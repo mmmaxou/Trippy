@@ -36,6 +36,7 @@
 		</div>
 		<div class="gridPlaces fix-it">
 			{{#each c in activities}}
+				{{#if isAPlace c.nature}}
 				<a href="/activities/{{c._id}}">
 					<div class="place">
 						<div class="wrapperPlace">
@@ -48,8 +49,9 @@
 								{{c.name}}
 							</div>
 						</div>
-					</div>
-				</a>
+					</div>    		
+				</a>        
+				{{/if}}		
 			{{/each}}
 		</div>
 	</div>
@@ -59,7 +61,7 @@
 		</div>
 		<div class="gridPlaces fix-it">
 			{{#each c in activities}}
-				{{#if isAnEvent nature}}
+				{{#if isAnEvent c.nature}}
 					<div class="place">
 						<div class="wrapperPlace">
 							<div class="imgPlace">

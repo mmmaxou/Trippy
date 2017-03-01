@@ -31,7 +31,7 @@
 
 <template name="citylist">
     <div class="filter">
-        <p>Filter By</p>
+        <p>Sort By</p>
         <ul class="nav nav-pills nav-justified">
             <li id='sort_date' class="active"><a data-toggle="pill" href="#">Recently Added</a></li>
             <li id='sort_az' class=''><a data-toggle="pill" href="#">A-Z</a></li>
@@ -41,7 +41,11 @@
     </div>
     <div class="grid">
         {{#each c in cities}}
-        <div class="grid-item"><img src="{{c.picture}}" alt="City Picture"></div>
+        <a href="/cities/{{c._id}}"><div class="grid-item">
+            <div class="darkerCityPicture"></div>
+            <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
+            <div class="cityName">{{c.name}}</div>
+        </div></a>
         {{/each}}
         {{isotope}}
     </div>

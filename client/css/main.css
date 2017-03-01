@@ -25,8 +25,57 @@
 
 .grid-item {
     width: 50%;
+    height: 300px;
+    overflow: hidden;
+    position:relative;
 }
 
 .grid-item img {
     width: 100%;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.grid-item:hover img {
+    -webkit-filter: blur(2px);
+    transform: scale(1.1,1.1);
+}
+
+.grid-item:hover .darkerCityPicture{
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.darkerCityPicture {
+    height:100%;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position:absolute;
+    top:0;
+    left:0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+.cityName {
+    width: 100%;
+    text-align: center;
+    top: 48%;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    z-index: 10;
 }

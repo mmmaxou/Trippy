@@ -13,12 +13,29 @@ Template.citylist.helpers({
     },
     activities: function() {
         return Activities.find();
+    },
+    isotope: function() {
+        $(document).ready(function(){
+            $('.grid').isotope({
+                // options
+                itemSelector: '.grid-item',
+            });
+        })
     }
 });
 
+Template.citylist.events({
+    'click *': function(){
+        $('.grid').isotope({
+            // options
+            itemSelector: '.grid-item',
+        });
+    }
+})
 
-$(document).ready(function () {
+Template.citylist.onCreated(function(){
     $('.grid').isotope({
+        // options
         itemSelector: '.grid-item',
     });
 });
@@ -26,18 +43,18 @@ $(document).ready(function () {
 Template.formActivity.events({
     'submit input' (event) {
         event.preventDefault();
-        
+
         //Get value from form elements
         const target = event.target;
         const text = target.name.value;
         const description = target.description.value;
-        
+
         Test.insert({
             text,
             description,
             createdAt: new Date()
         });
-        
+
         //Clear form
         target.text.value = '';
         target.description.value = '';

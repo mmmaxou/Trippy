@@ -29,6 +29,7 @@
 			{{> googleMap name="map" options=mapOptions}}
 		  </div>
 	</div>
+<!--
 	<div class="places">
 		<div class="wrapperTextTitle">
 			<p>Places to visit</p>
@@ -74,6 +75,7 @@
 			{{/each}}
 		</div>
 	</div>
+
 	<div class="addActivity">
 		<div class="wrapperTextTitle">
 			<p>Add an Activity</p>
@@ -90,19 +92,27 @@
 			<canvas id="chart" width="800px" height="400px"></canvas>
 		</div>
 	</div>
-	<!--<div class="comments">
+-->
+	<div class="comments">
 		<div class="wrapperTextTitle">
 			<p>Comments</p>
 		</div>
 		<div class="wrapperComments">
-			{{#each c in activities}}
+			{{#each c in activities.comments}}
 				<div class="headerComment">
-					<p>{{c.comments.user}}</p>
+					<p>{{c.user}}</p>
 				</div>
 				<div class="commentsContent">
-					
+					<p>{{c.text}}</p>
 				</div>
 			{{/each}}
 		</div>
-	</div>-->
+        <div class="commentsAdd">
+            <button id="commentAdd">Ajouter un commentaire</button>
+            <form id="sectionAdd" style="display:none;">
+                <textarea id="comment" name="comment"></textarea>
+                <input type="submit" name="submit" value="Comment !" />
+            </form>
+        </div>
+	</div>
 </template>

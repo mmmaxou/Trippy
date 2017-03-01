@@ -48,9 +48,13 @@ Template.citylist.events({
         });
     },
     'click #sort_az': function(){
-        console.log("sort az");
         $('.grid').isotope({ 
             sortBy: 'name'
+        });        
+    },
+    'click #sort_date': function(){
+        $('.grid').isotope({ 
+            sortBy: 'original-order'
         });        
     }
 })
@@ -112,7 +116,6 @@ Template.cityAdd.events({
             long : target.long.value,
             lat : target.lat.value
         }
-        city.createdAt = new Date();
         
         // show the upload panel 
         $('.uploadPanel').fadeIn();
@@ -128,3 +131,29 @@ Template.cityAdd.events({
         
     }
 });
+
+Template.activities.events({
+    'click #commentAdd': function(){
+        $('#sectionAdd').fadeIn();
+    },
+    'submit form#sectionAdd': function (event) {
+        event.preventDefault();
+        console.log("working");
+        
+        var activity = this;      
+        var comment = {};
+        const target = event.target;        
+        var comment.text = target.comment.value;
+        var comment.date = new Date();
+//        var user = ;
+//        TODO
+        
+        Activities.update({
+            _id : activity._id
+        }, {
+            $push : {
+                comments : comment
+            }
+        })   
+    }
+})

@@ -127,12 +127,17 @@ Template.cityAdd.events({
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
-        // TODO
+        city.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
 
         Cities.insert(city, function(err, objectId){
             city._id = objectId;
             Meteor.call("initUploadServerForCity", city);
         });
+        
+        
 
     }
 });
@@ -150,19 +155,35 @@ Template.activities.events({
         const target = event.target;        
         comment.text = target.comment.value;
         comment.date = new Date();
+        comment.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
         
-        Meteor.call("addComment", activity, comment);
+        Meteor.call("addComment", activity, comment, user);
+        toastr.success("Comment added !")
         $('#sectionAdd').fadeOut();
         target.comment.value = "";        
     },
     'click #like': function(){
         if(Meteor.user() != null) {
             var activity = this;
-            var user = Meteor.user();
-            Meteor.call("addLike", activity, user);
+            var user = Meteor.user()._id;
+            var check = activity.usersLiking.some(function(e){
+                return e == user;
+            })
+            console.log("User : " + user)
+            console.log("Check : " + check)
+            if ( check ) {
+                Meteor.call("addLike", activity, user);
+            } else {
+                toastr.options = {
+                "timeOut": "2000"
+            }
+            toastr.error("You already liked !");
+            }
         } else {
             toastr.options = {
-                "positionClass": "toast-bottom-center",
                 "timeOut": "2000"
             }
             toastr.error("You are not Logged in. Please log in");

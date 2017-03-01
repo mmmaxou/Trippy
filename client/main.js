@@ -82,4 +82,10 @@ Template.formActivity.events({
         target.text.value = '';
         target.description.value = '';
     }
-})
+});
+
+$(document).ready(function () {
+    $('.grid').isotope({
+        itemSelector: '.grid-item',
+    });
+}); 

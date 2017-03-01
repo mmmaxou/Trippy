@@ -76,6 +76,7 @@ Template.formActivity.events({
         activity.comments = [];
         activity.editor = "TODO";
         activity.pictures = [];
+        activity.like = 0;
         
         console.log(activity)
         console.log("city :", city)
@@ -143,17 +144,23 @@ Template.activities.events({
         var activity = this;      
         var comment = {};
         const target = event.target;        
-        var comment.text = target.comment.value;
-        var comment.date = new Date();
-//        var user = ;
-//        TODO
+        comment.text = target.comment.value;
+        comment.date = new Date();
         
-        Activities.update({
-            _id : activity._id
-        }, {
-            $push : {
-                comments : comment
+        Meteor.call("addComment", activity, comment);
+        $('#sectionAdd').fadeOut();
+        target.comment.value = "";        
+    },
+    'click #like': function(){
+        if(Meteor.user() != null) {
+            var activity = this;
+            Meteor.call("addLike", activity);
+        } else {
+            toastr.options = {
+                "positionClass": "toast-bottom-center",
+                "timeOut": "2000"
             }
-        })   
+            toastr.error("You are not Logged in. Please log in");
+        }
     }
 })

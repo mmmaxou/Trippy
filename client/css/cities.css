@@ -56,12 +56,14 @@
 
 .gridPlaces{
 	margin:auto;
+	width:1000px;
 }
 
 .place{
 	display:block;
 	float:left;
 	transition :transform 1s ease;
+	margin:5px;
 }
 
 .place:hover .place{
@@ -80,12 +82,9 @@
 	overflow: hidden;
 }
 .darkerPhoto{
-	position:relative;
-	top:0;
 	height:300px;
 	width:100%;
 	background-color:rgba(0, 0, 0, 0.50);
-	z-index:10;
 }
 
 .imgPlace img{

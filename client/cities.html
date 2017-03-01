@@ -37,17 +37,41 @@
 		</div>
 		<div class="gridPlaces fix-it">
 			{{#each c in activities}}
-			<div class="place">
-				<div class="wrapperPlace">
-					<div class="imgPlace">
-						<img src="{{c.pictures.[0]}}" alt="c.name"/>
-						<div class="darkerPhoto"></div>
+				
+					<div class="place">
+						<div class="wrapperPlace">
+							<div class="imgPlace">
+								<img src="{{c.pictures.[0]}}" alt="c.name"/>
+								<div class="darkerPhoto"></div>
+							</div>
+							<div class="placeCaption">
+								{{c.name}}
+							</div>
+						</div>
 					</div>
-					<div class="placeCaption">
-						{{c.name}}
+				
+			{{/each}}
+		</div>
+	</div>
+	<div class="places">
+		<div class="wrapperTextTitle">
+			<p>Activities to do</p>
+		</div>
+		<div class="gridPlaces fix-it">
+			{{#each c in activities nature}}{{#if isAPlace nature}}{{/if}}
+				{{#if isAnEvent}}
+					<div class="place">
+						<div class="wrapperPlace">
+							<div class="imgPlace">
+								<img src="{{c.pictures.[0]}}" alt="c.name"/>
+								<div class="darkerPhoto"></div>
+							</div>
+							<div class="placeCaption">
+								{{c.name}}
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
+				{{/if}}
 			{{/each}}
 		</div>
 	</div>

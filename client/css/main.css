@@ -8,10 +8,12 @@
 }
 
 .filter {
-    background: #e6e6e6;
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
+    background: rgb(234, 90, 85);
+    border: 2px solid rgb(234, 90, 85);
+    color: white;
 }
 
 .filter p {
@@ -21,6 +23,19 @@
 
 .filter a {
     color: black;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: rgb(234, 90, 85);
+}
+
+.nav-pills > li > a {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(234, 90, 85);
 }
 
 .grid-item {

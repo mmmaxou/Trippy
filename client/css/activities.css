@@ -1,0 +1,17 @@
+.activitiesTitleWrapper{
+	margin-top:70px;
+	height:300px;
+	background:#ea5a55;
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+.activitiesHeaderText{
+	font-size: 40px;
+	line-height: 300px;
+	margin:auto;
+	text-align: center;
+	color:white;
+	text-transform: uppercase;
+	font-weight:bold;
+}
+

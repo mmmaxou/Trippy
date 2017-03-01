@@ -95,6 +95,7 @@ Template.formActivity.events({
         activity.editor = "TODO";
         activity.pictures = [];
         activity.like = 0;
+        activity.usersLiking = [];
 
         console.log(activity)
         console.log("city :", city)
@@ -135,18 +136,24 @@ Template.cityAdd.events({
             long : target.long.value,
             lat : target.lat.value
         }
+        city.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
 
         // show the upload panel 
         $('.uploadPanel').fadeIn();
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
-        // TODO
+        
 
         Cities.insert(city, function(err, objectId){
             city._id = objectId;
             Meteor.call("initUploadServerForCity", city);
         });
+        
+        
 
     }
 });
@@ -164,20 +171,35 @@ Template.activities.events({
         const target = event.target;        
         comment.text = target.comment.value;
         comment.date = new Date();
-
+        comment.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
+        
         Meteor.call("addComment", activity, comment);
+        toastr.success("Comment added !")
         $('#sectionAdd').fadeOut();
         target.comment.value = "";        
     },
     'click #like': function(){
         if(Meteor.user() != null) {
             var activity = this;
-            var user = Meteor.user();
-            console.log(user)
-            Meteor.call("addLike", activity);
+            var user = Meteor.user()._id;
+            var check = !activity.usersLiking.some(function(e){
+                return e == user;
+            })
+            console.log("User : " + user)
+            console.log("Check : " + check)
+            if ( check ) {
+                Meteor.call("addLike", activity, user);
+            } else {
+                toastr.options = {
+                "timeOut": "2000"
+            }
+            toastr.error("You already liked !");
+            }
         } else {
             toastr.options = {
-                "positionClass": "toast-bottom-center",
                 "timeOut": "2000"
             }
             toastr.error("You are not Logged in. Please log in");

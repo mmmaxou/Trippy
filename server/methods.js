@@ -57,12 +57,15 @@ Meteor.methods({
             }
         }) 
     },
-    'addLike': function(activity)  {
+    'addLike': function(activity, user)  {
         Activities.update({
             _id : activity._id
         }, {
             $inc : {
                 like : 1
+            },
+            $push : {
+                usersLiking : user
             }
         }) 
     }

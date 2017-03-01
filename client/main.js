@@ -143,8 +143,8 @@ Template.activities.events({
         var activity = this;      
         var comment = {};
         const target = event.target;        
-        var comment.text = target.comment.value;
-        var comment.date = new Date();
+        comment.text = target.comment.value;
+        comment.date = new Date();
 //        var user = ;
 //        TODO
         

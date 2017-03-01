@@ -41,8 +41,17 @@ Template.citylist.events({
     },
     'load *': function(){
         $('.grid').isotope({
+            getSortData: {
+                name : ".cityName"
+            },
             itemSelector: '.grid-item',
         });
+    },
+    'click #sort_az': function(){
+        console.log("sort az");
+        $('.grid').isotope({ 
+            sortBy: 'name'
+        });        
     }
 })
 

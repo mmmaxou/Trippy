@@ -33,11 +33,15 @@ Template.cities.helpers({
     }
 });
 
+var scrollFunction = function(idstring) {
+    $('html, body').animate({
+        scrollTop: $(idstring).offset().top
+    }, 1000);
+};
+
 Template.citylist.events({
-    'click #destAnchor': function(e){
-        $('html, body').animate({
-            scrollTop: $("#dest").offset().top
-        }, 1000);
+    "click #destLink": function() { 
+        scrollFunction('#dest');
     },
     'load *': function(){
         $('.grid').isotope({
@@ -45,6 +49,20 @@ Template.citylist.events({
                 name : ".cityName"
             },
             itemSelector: '.grid-item',
+        });
+        $('body').scrollspy({target: ".navbar", offset: 50});
+        $("#myNavbar a").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+
+                var hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+                    window.location.hash = hash;
+                });
+            }
         });
     },
     'click #sort_az': function(){
@@ -62,12 +80,12 @@ Template.citylist.events({
 Template.formActivity.events({
     'submit form': function (event) {
         event.preventDefault();
-        
+
         var city = this || {picture: '/images/Aix/aix.jpg'};
         var activity = {};       
 
         const target = event.target;
-        
+
         activity.name = target.name.value;
         activity.description = target.description.value;
         activity.datestart = target.datestart.value;
@@ -76,23 +94,25 @@ Template.formActivity.events({
         activity.comments = [];
         activity.editor = "TODO";
         activity.pictures = [];
-        
+        activity.like = 0;
+        activity.usersLiking = [];
+
         console.log(activity)
         console.log("city :", city)
         console.log(Meteor.userId())
-        
+
         // show the upload panel 
         $('.uploadPanel').fadeIn();
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
         // TODO
-    
+
         Activities.insert(activity, function(err, objectId){
             activity._id = objectId;
             Meteor.call("initUploadServerForActivity", city, activity);
         });
-        
+
     },
 
     'change input[type=radio]' : function(){
@@ -107,28 +127,34 @@ Template.cityAdd.events({
     'submit form': function (event) {
         event.preventDefault();
         var city = {};       
-        
+
         const target = event.target;
-        
+
         city.name = target.name.value;
         city.description = target.description.value;
         city.coordinates = {
             long : target.long.value,
             lat : target.lat.value
         }
-        
+        city.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
+
         // show the upload panel 
         $('.uploadPanel').fadeIn();
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
-        // TODO
-    
+        
+
         Cities.insert(city, function(err, objectId){
             city._id = objectId;
             Meteor.call("initUploadServerForCity", city);
         });
         
+        
+
     }
 });
 
@@ -139,21 +165,49 @@ Template.activities.events({
     'submit form#sectionAdd': function (event) {
         event.preventDefault();
         console.log("working");
-        
+
         var activity = this;      
         var comment = {};
         const target = event.target;        
         comment.text = target.comment.value;
         comment.date = new Date();
+<<<<<<< HEAD
 //        var user = ;
 //        TODO
+=======
+        comment.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
+>>>>>>> e8656f0a3ec3608c180d9ea4faccd63675ee8d30
         
-        Activities.update({
-            _id : activity._id
-        }, {
-            $push : {
-                comments : comment
+        Meteor.call("addComment", activity, comment);
+        toastr.success("Comment added !")
+        $('#sectionAdd').fadeOut();
+        target.comment.value = "";        
+    },
+    'click #like': function(){
+        if(Meteor.user() != null) {
+            var activity = this;
+            var user = Meteor.user()._id;
+            var check = !activity.usersLiking.some(function(e){
+                return e == user;
+            })
+            console.log("User : " + user)
+            console.log("Check : " + check)
+            if ( check ) {
+                Meteor.call("addLike", activity, user);
+            } else {
+                toastr.options = {
+                "timeOut": "2000"
             }
-        })   
+            toastr.error("You already liked !");
+            }
+        } else {
+            toastr.options = {
+                "timeOut": "2000"
+            }
+            toastr.error("You are not Logged in. Please log in");
+        }
     }
 })

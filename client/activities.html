@@ -98,9 +98,9 @@
 			<p>Comments</p>
 		</div>
 		<div class="wrapperComments">
-			{{#each c in activities.comments}}
+			{{#each c in comments}}
 				<div class="headerComment">
-					<p>{{c.user}}</p>
+					<p>User : {{c.user.email}} - Date : {{c.date}}</p>
 				</div>
 				<div class="commentsContent">
 					<p>{{c.text}}</p>
@@ -115,4 +115,11 @@
             </form>
         </div>
 	</div>
+    
+<!--    LIKE BUTTON-->
+    <div class="likeSection">
+        <button id="like">LIKE THIS PAGE</button>
+        <p>Number of likes : {{like}}</p>
+    </div>
+    
 </template>

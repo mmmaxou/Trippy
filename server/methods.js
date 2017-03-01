@@ -47,5 +47,26 @@ Meteor.methods({
                 document.location.href = "/";
             }
         });
+    },
+    'addComment': function(activity, comment) {
+        Activities.update({
+            _id : activity._id
+        }, {
+            $push : {
+                comments : comment
+            }
+        }) 
+    },
+    'addLike': function(activity, user)  {
+        Activities.update({
+            _id : activity._id
+        }, {
+            $inc : {
+                like : 1
+            },
+            $push : {
+                usersLiking : user
+            }
+        }) 
     }
 });

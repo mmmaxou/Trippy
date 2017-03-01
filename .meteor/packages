@@ -31,3 +31,5 @@ tomi:upload-server
 tomi:upload-jquery
 # iron:middleware-stack@1.1.0
 okgrow:router-autoscroll
+mrt:toastjs
+chrismbeckett:toastr

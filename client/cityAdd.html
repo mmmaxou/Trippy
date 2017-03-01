@@ -1,0 +1,16 @@
+<template name="cityAdd">
+    <form class="new-task">
+        Add city name :    
+        <input type="text" name="name" />        
+        <br> Add city Description :
+        <textarea rows="4" cols="20" name="description"></textarea>
+        <br> Coordinates
+        <br> Longitude : 
+        <input type="text" name="long" /> 
+        <br> Latitude : 
+        <input type="text" name="lat" /> 
+        
+        <input id="submit" type="submit" value="Create">
+    </form>
+    {{> upload_bootstrap}}
+</template>

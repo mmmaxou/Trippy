@@ -7,12 +7,7 @@
         <br> Add activity nature :
         Event<input id="event" type="radio" name="nature" value="event" />
         Place<input type="radio" name="nature" value="place" />
-    
-        <br> Add activity picture :
-        TODO
-        
         <br> Add activity Description :
-<!--        <input type="text" name="description" /> -->
         <textarea rows="4" cols="20" name="description"></textarea>
         
         <br>
@@ -21,7 +16,8 @@
             <input type="date" name="dateend" placeholder="end date"/>
         </div>
         
-        <input type="submit" value="Create">
+        <input id="submit" type="submit" value="Create">
     </form>
+    {{> upload_bootstrap multiple=true}}
     
 </template>

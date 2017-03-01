@@ -26,6 +26,9 @@ Router.route('/activities/:id', {
 Router.route('/formActivity', {
     template: "formActivity"
 })
+
 Router.route('/cityAdd', {
     template: "cityAdd"
 })
+
+/*meteor update iron:middleware-stack*/

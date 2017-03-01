@@ -37,7 +37,8 @@
 		</div>
 		<div class="gridPlaces fix-it">
 			{{#each c in activities}}
-				{{#if isAPlace c.nature}}				
+				{{#if isAPlace c.nature}}
+				<a href="/activities/{{c._id}}">
 					<div class="place">
 						<div class="wrapperPlace">
 							<div class="imgPlace">
@@ -49,8 +50,9 @@
 								{{c.name}}
 							</div>
 						</div>
-					</div>            
-				{{/if}}				
+					</div>    		
+				</a>        
+				{{/if}}		
 			{{/each}}
 		</div>
 	</div>
@@ -76,7 +78,7 @@
 			{{/each}}
 		</div>
 	</div>
-	<div class="addCity">
+	<div class="addActivity">
 		<div class="wrapperTextTitle">
 			<p>Add an Activity</p>
 		</div>
@@ -84,4 +86,28 @@
 			{{>formActivity}}
 		</div>
 	</div>
+	<div class="temperatures">
+		<div class="wrapperTextTitle">
+			<p>Temperatures</p>
+		</div>
+		<div class="wrapperCharts">
+			<canvas id="chart" width="800px" height="400px"></canvas>
+		</div>
+	</div>
+	<!--<div class="comments">
+		<div class="wrapperTextTitle">
+			<p>Comments</p>
+		</div>
+		<div class="wrapperComments">
+			{{#each c in activities}}
+				<div class="headerComment">
+					<p>{{c.comments.user}}</p>
+				</div>
+				<div class="commentsContent">
+					
+				</div>
+			{{/each}}
+		</div>
+	</div>-->
+	{{>footer}}
 </template>

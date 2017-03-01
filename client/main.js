@@ -13,14 +13,6 @@ Template.citylist.helpers({
     },
     activities: function() {
         return Activities.find();
-    },
-    isotope: function() {
-        $(document).ready(function(){
-            $('.grid').isotope({
-                // options
-                itemSelector: '.grid-item',
-            });
-        })
     }
 });
 

@@ -4,7 +4,7 @@ Router.configure({
 });
 
 Router.route("/", {
-    template: "home",
+    template: "home"
 });
 
 Router.route('/cities/:id', {
@@ -24,5 +24,5 @@ Router.route('/activities/:id', {
 });
 
 Router.route('/formActivity', {
-    template: "formActivity",
+    template: "formActivity"
 })

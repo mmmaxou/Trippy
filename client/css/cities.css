@@ -1,0 +1,52 @@
+.cityHeaderWrapper{
+	margin-top:70px;
+	height:300px;
+	background:#8d5050;
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+.wrapperCityHeaderText{
+	background: rgba(0, 0, 0, 0.30);
+}
+.cityHeaderText{
+	font-size: 40px;
+	line-height: 300px;
+	margin:auto;
+	text-align: center;
+	color:white;
+	text-transform: uppercase;
+}
+
+.wrapperTextTitle{
+	width:80%;
+	padding-top:20px;
+	font-size:1.5em;
+	text-transform: uppercase;
+	height:80px;
+	border-bottom:1px solid black;
+	margin:auto;
+	text-align:center;
+}
+.wrapperCityDescription{
+	width:60%;
+	padding-top: 50px;
+	text-indent:25px;
+	margin:auto;
+}
+
+.gmaps{
+	height:300px;
+	width:100%;
+	background-color:#919191;
+}
+
+.map-container{
+	padding-top:100px;
+	
+}
+
+
+.places{
+	
+}
+

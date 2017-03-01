@@ -17,32 +17,22 @@ Template.citylist.helpers({
 });
 
 Template.citylist.events({
-    'click *': function(){
-        $('.grid').isotope({
-            // options
-            itemSelector: '.grid-item',
-        });
-    },
     'click #destAnchor': function(e){
-        e.preventDefault();
         $('html, body').animate({
             scrollTop: $("#dest").offset().top
         }, 1000);
+    },
+    'load *': function(){
+        $('.grid').isotope({
+            itemSelector: '.grid-item',
+        });
     }
 })
-
-Template.citylist.onCreated(function(){
-    $('.grid').isotope({
-        // options
-        itemSelector: '.grid-item',
-    });
-});
 
 Template.formActivity.events({
     'submit' (event) {
         event.preventDefault();
 
-        //Get value from form elements
         const target = event.target;
         const name = target.name.value;
         const description = target.description.value;
@@ -66,8 +56,6 @@ Template.formActivity.events({
             pictures
         });
 
-        //Go back home
-        //Change it later to go to the new page
         window.location.href = "../";
 
     },
@@ -79,14 +67,7 @@ Template.formActivity.events({
             $('#dates').fadeOut();            
         } else { $('#dates').fadeIn();}
 
-        //Clear form
         target.text.value = '';
         target.description.value = '';
     }
 });
-
-$(document).ready(function () {
-    $('.grid').isotope({
-        itemSelector: '.grid-item',
-    });
-}); 

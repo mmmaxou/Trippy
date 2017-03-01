@@ -29,3 +29,4 @@ isotope:isotope
 mrt:jquery-masonry
 tomi:upload-server
 tomi:upload-jquery
+# iron:middleware-stack@1.1.0

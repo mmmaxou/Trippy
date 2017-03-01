@@ -17,14 +17,13 @@ Template.citylist.helpers({
 });
 
 Template.citylist.events({
-    'click #destAnchor': function(){
+    'click #destAnchor': function(e){
         $('html, body').animate({
-            scrollTop: $(".mainContent").offset().top
-        }, 2000);
+            scrollTop: $("#dest").offset().top
+        }, 1000);
     },
     'load *': function(){
         $('.grid').isotope({
-            // options
             itemSelector: '.grid-item',
         });
     }
@@ -37,8 +36,8 @@ Template.formActivity.events({
         var city = this || {picture: '/images/Aix/aix.jpg'};
         var activity = {};       
 
-        //Get value from form elements
         const target = event.target;
+        
         activity.name = target.name.value;
         activity.description = target.description.value;
         activity.datestart = target.datestart.value;
@@ -69,17 +68,15 @@ Template.formActivity.events({
 //        window.location.href = "../";
         
     },
-    
+
     'change input[type=radio]' : function(){
         var input = $("#event");
         if ( input.prop("checked") == false) {
-            console.log("true");
             $('#dates').fadeOut();            
         } else { $('#dates').fadeIn();}
     },
     
-    'click .uploadPanel' : function() {
-        console.log("clicked")
-        Meteor.call("initUploadServerForCity", "name", "lat", "long");
-    }
+//    'click .uploadPanel' : function() {
+//        Meteor.call("initUploadServerForCity", "name", "lat", "long");
+//    }
 });

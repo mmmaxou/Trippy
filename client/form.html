@@ -1,12 +1,27 @@
 <template name="formActivity">
     
     <form class="new-task">
-        Add city name :    
+        Add activity name :    
         <input type="text" name="name" />
-
-        Add city Description :
-        <input type="text" name="description" />
-        <input type="submit" value="Envoyer">
+        
+        <br> Add activity nature :
+        Event<input id="event" type="radio" name="nature" value="event" />
+        Place<input type="radio" name="nature" value="place" />
+    
+        <br> Add activity picture :
+        TODO
+        
+        <br> Add activity Description :
+<!--        <input type="text" name="description" /> -->
+        <textarea rows="4" cols="20" name="description"></textarea>
+        
+        <br>
+        <div id="dates" style="display:none;">
+            <input type="date" name="datestart" placeholder="start date"/>
+            <input type="date" name="dateend" placeholder="end date"/>
+        </div>
+        
+        <input type="submit" value="Create">
     </form>
     
 </template>

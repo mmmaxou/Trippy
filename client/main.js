@@ -16,30 +16,45 @@ Template.citylist.helpers({
     }
 });
 
-
-$(document).ready(function () {
-    $('.grid').isotope({
-        itemSelector: '.grid-item',
-    });
-});
-
 Template.formActivity.events({
-    'submit input' (event) {
+    'submit' (event) {
         event.preventDefault();
         
         //Get value from form elements
         const target = event.target;
-        const text = target.name.value;
+        const name = target.name.value;
         const description = target.description.value;
+        const datestart = target.datestart.value;
+        const dateend = target.dateend.value;
+        const nature = target.nature.value;
+        var comments = [];
+        var editor = "TODO";
+        var pictures = [];
         
+        console.log(name, description, datestart, dateend, nature)
+    
         Test.insert({
-            text,
+            name,
             description,
-            createdAt: new Date()
+            datestart,
+            dateend,
+            nature,
+            comments,
+            editor,
+            pictures
         });
+                
+        //Go back home
+        //Change it later to go to the new page
+        window.location.href = "../";
         
-        //Clear form
-        target.text.value = '';
-        target.description.value = '';
+    },
+    
+    'change input[type=radio]' : function(){
+        var input = $("#event");
+        if ( input.prop("checked") == false) {
+            console.log("true");
+            $('#dates').fadeOut();            
+        } else { $('#dates').fadeIn();}
     }
 })

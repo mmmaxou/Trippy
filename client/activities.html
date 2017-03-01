@@ -1,3 +1,111 @@
+
 <template name="activities">
-    Activity name : {{name}}
+	{{>navbar}}
+	<div class="cityHeaderWrapper" style="
+	background:url('{{picture}}') no-repeat;background-size:cover;">
+		<div class="wrapperCityHeaderText">
+			<p class="cityHeaderText">{{name}}</p>
+		</div>
+	</div>
+	<div class="info">
+		<div class="wrapperTextTitle">
+			<p>Info & Useful links</p>
+		</div>
+		<div class="wrapperCityDescription">
+			<p>{{description}}</p>
+		</div>
+		<div class="usefulLinks">
+			<ul>
+				<li>blablablabl</li>
+				<li>blablablabl</li>
+				<li>blablablabl</li>
+				<li>blablablabl</li>
+			</ul>
+		</div>
+	</div>
+	<div class="gmaps">
+		<div class="wrapperTextTitle">
+			<p>How to go to this city</p>
+		</div>
+		 <div class="map-container">
+			{{> googleMap name="map" options=mapOptions}}
+		  </div>
+	</div>
+	<div class="places">
+		<div class="wrapperTextTitle">
+			<p>Places to visit</p>
+		</div>
+		<div class="gridPlaces fix-it">
+			{{#each c in activities}}
+				<a href="/activities/{{c._id}}">
+					<div class="place">
+						<div class="wrapperPlace">
+							<div class="imgPlace">
+								<div class="darkerPhoto"></div>
+								<img src="{{c.pictures.[0]}}" alt="c.name"/>
+								
+							</div>
+							<div class="placeCaption">
+								{{c.name}}
+							</div>
+						</div>
+					</div>
+				</a>
+			{{/each}}
+		</div>
+	</div>
+	<div class="places">
+		<div class="wrapperTextTitle">
+			<p>Activities to do</p>
+		</div>
+		<div class="gridPlaces fix-it">
+			{{#each c in activities}}
+				{{#if isAnEvent nature}}
+					<div class="place">
+						<div class="wrapperPlace">
+							<div class="imgPlace">
+								<img src="{{c.pictures.[0]}}" alt="c.name"/>
+								<div class="darkerPhoto"></div>
+							</div>
+							<div class="placeCaption">
+								{{c.name}}
+							</div>
+						</div>
+					</div>
+				{{/if}}
+			{{/each}}
+		</div>
+	</div>
+	<div class="addActivity">
+		<div class="wrapperTextTitle">
+			<p>Add an Activity</p>
+		</div>
+		<div class="formAddCity">
+			{{>formActivity}}
+		</div>
+	</div>
+	<div class="temperatures">
+		<div class="wrapperTextTitle">
+			<p>Temperatures</p>
+		</div>
+		<div class="wrapperCharts">
+			<canvas id="chart" width="800px" height="400px"></canvas>
+		</div>
+	</div>
+	<!--<div class="comments">
+		<div class="wrapperTextTitle">
+			<p>Comments</p>
+		</div>
+		<div class="wrapperComments">
+			{{#each c in activities}}
+				<div class="headerComment">
+					<p>{{c.comments.user}}</p>
+				</div>
+				<div class="commentsContent">
+					
+				</div>
+			{{/each}}
+		</div>
+	</div>-->
+	{{>footer}}
 </template>

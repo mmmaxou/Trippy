@@ -24,10 +24,10 @@ Template.cities.helpers({
         return Activities.find();
     },
     isAnEvent: function(nature){
-        return nature === "event";
+        return nature == "event";
     },
     isAPlace: function(nature){
-        return nature === "place";        
+        return nature == "place";        
     }
 });
 

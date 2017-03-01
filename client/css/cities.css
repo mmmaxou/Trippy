@@ -25,28 +25,89 @@
 	height:80px;
 	border-bottom:1px solid black;
 	margin:auto;
+	margin-bottom:50px;
 	text-align:center;
 }
 .wrapperCityDescription{
 	width:60%;
-	padding-top: 50px;
 	text-indent:25px;
 	margin:auto;
 }
 
 .gmaps{
-	height:300px;
 	width:100%;
-	background-color:#919191;
 }
 
 .map-container{
-	padding-top:100px;
+	background-color:#919191;
+	height:300px;
 	
+}
+.map-canvas{
+	height:300px;
 }
 
 
-.places{
+.fix-it {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}    
+
+.gridPlaces{
+	margin:auto;
+}
+
+.place{
+	display:block;
+	float:left;
+	transition :transform 1s ease;
+}
+
+.place:hover .place{
+	color:red;
 	
 }
+
+.wrapperPlace{
+	width:300px;
+	height:400px;
+}
+.imgPlace{
+	text-align: center;
+	height:300px;
+	width:100%;
+	overflow: hidden;
+}
+.darkerPhoto{
+	position:relative;
+	top:0;
+	height:300px;
+	width:100%;
+	background-color:rgba(0, 0, 0, 0.50);
+	z-index:10;
+}
+
+.imgPlace img{
+	position:relative;/*
+	transform:translateX(-50%);*/
+	width:100%;
+	height:100%;
+}
+.placeCaption{
+	height:100px;
+	width:100%;
+	color:white;
+	text-align:center;
+	background-color:#2e2e2e;
+	text-transform: uppercase;
+	line-height:100px;
+	font-weight:bold;
+}
+
+
+
+
+
+
 

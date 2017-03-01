@@ -16,6 +16,15 @@ Template.citylist.helpers({
     }
 });
 
+Template.cities.helpers({
+    cities: function() {
+        return Cities.find();
+    },
+    activities: function() {
+        return Activities.find();
+    }
+});
+
 Template.citylist.events({
     'click #destAnchor': function(e){
         $('html, body').animate({

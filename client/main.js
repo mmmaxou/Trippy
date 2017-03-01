@@ -17,14 +17,13 @@ Template.citylist.helpers({
 });
 
 Template.citylist.events({
-    'click #destAnchor': function(){
+    'click #destAnchor': function(e){
         $('html, body').animate({
-            scrollTop: $(".mainContent").offset().top
-        }, 2000);
+            scrollTop: $("#dest").offset().top
+        }, 1000);
     },
     'load *': function(){
         $('.grid').isotope({
-            // options
             itemSelector: '.grid-item',
         });
     }
@@ -34,7 +33,6 @@ Template.formActivity.events({
     'submit' (event) {
         event.preventDefault();
 
-        //Get value from form elements
         const target = event.target;
         const name = target.name.value;
         const description = target.description.value;
@@ -44,9 +42,9 @@ Template.formActivity.events({
         var comments = [];
         var editor = "TODO";
         var pictures = [];
-        
+
         console.log(name, description, datestart, dateend, nature)
-    
+
         Test.insert({
             name,
             description,
@@ -57,13 +55,11 @@ Template.formActivity.events({
             editor,
             pictures
         });
-                
-        //Go back home
-        //Change it later to go to the new page
+
         window.location.href = "../";
-        
+
     },
-    
+
     'change input[type=radio]' : function(){
         var input = $("#event");
         if ( input.prop("checked") == false) {
@@ -71,14 +67,7 @@ Template.formActivity.events({
             $('#dates').fadeOut();            
         } else { $('#dates').fadeIn();}
 
-        //Clear form
         target.text.value = '';
         target.description.value = '';
     }
 });
-
-$(document).ready(function () {
-    $('.grid').isotope({
-        itemSelector: '.grid-item',
-    });
-}); 

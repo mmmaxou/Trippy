@@ -27,3 +27,4 @@ twbs:bootstrap@=3.3.5
 iron:router@=1.0.12
 isotope:isotope
 mrt:jquery-masonry
+iron:middleware-stack@1.1.0

@@ -33,11 +33,15 @@ Template.cities.helpers({
     }
 });
 
+var scrollFunction = function(idstring) {
+    $('html, body').animate({
+        scrollTop: $(idstring).offset().top
+    }, 1000);
+};
+
 Template.citylist.events({
-    'click #destAnchor': function(e){
-        $('html, body').animate({
-            scrollTop: $("#dest").offset().top
-        }, 1000);
+    "click #destLink": function() { 
+        scrollFunction('#dest');
     },
     'load *': function(){
         $('.grid').isotope({
@@ -62,12 +66,12 @@ Template.citylist.events({
 Template.formActivity.events({
     'submit form': function (event) {
         event.preventDefault();
-        
+
         var city = this || {picture: '/images/Aix/aix.jpg'};
         var activity = {};       
 
         const target = event.target;
-        
+
         activity.name = target.name.value;
         activity.description = target.description.value;
         activity.datestart = target.datestart.value;
@@ -77,23 +81,23 @@ Template.formActivity.events({
         activity.editor = "TODO";
         activity.pictures = [];
         activity.like = 0;
-        
+
         console.log(activity)
         console.log("city :", city)
         console.log(Meteor.userId())
-        
+
         // show the upload panel 
         $('.uploadPanel').fadeIn();
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
         // TODO
-    
+
         Activities.insert(activity, function(err, objectId){
             activity._id = objectId;
             Meteor.call("initUploadServerForActivity", city, activity);
         });
-        
+
     },
 
     'change input[type=radio]' : function(){
@@ -108,28 +112,28 @@ Template.cityAdd.events({
     'submit form': function (event) {
         event.preventDefault();
         var city = {};       
-        
+
         const target = event.target;
-        
+
         city.name = target.name.value;
         city.description = target.description.value;
         city.coordinates = {
             long : target.long.value,
             lat : target.lat.value
         }
-        
+
         // show the upload panel 
         $('.uploadPanel').fadeIn();
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
         // TODO
-    
+
         Cities.insert(city, function(err, objectId){
             city._id = objectId;
             Meteor.call("initUploadServerForCity", city);
         });
-        
+
     }
 });
 
@@ -140,7 +144,7 @@ Template.activities.events({
     'submit form#sectionAdd': function (event) {
         event.preventDefault();
         console.log("working");
-        
+
         var activity = this;      
         var comment = {};
         const target = event.target;        
@@ -154,7 +158,8 @@ Template.activities.events({
     'click #like': function(){
         if(Meteor.user() != null) {
             var activity = this;
-            Meteor.call("addLike", activity);
+            var user = Meteor.user();
+            Meteor.call("addLike", activity, user);
         } else {
             toastr.options = {
                 "positionClass": "toast-bottom-center",

@@ -7,6 +7,13 @@
     color: white;
 }
 
+#dest {
+    display: block;
+    position: relative;
+    top: -70px;
+    visibility: hidden;
+}
+
 .filter {
     margin-top: 30px;
     margin-bottom: 30px;

@@ -31,6 +31,6 @@ Router.route('/cityAdd', {
     template: "cityAdd"
 })
 
-RouterAutoScroll.animationDuration = 0;
+RouterAutoscroll.animationDuration = 0;
 
 /*meteor update iron:middleware-stack*/

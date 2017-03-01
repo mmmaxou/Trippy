@@ -30,6 +30,11 @@ Template.citylist.events({
             // options
             itemSelector: '.grid-item',
         });
+    },
+    'click #destAnchor': function(){
+        $('html, body').animate({
+            scrollTop: $(".mainContent").offset().top
+        }, 2000);
     }
 })
 

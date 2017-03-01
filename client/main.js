@@ -112,6 +112,7 @@ Template.cityAdd.events({
             long : target.long.value,
             lat : target.lat.value
         }
+        city.createdAt = new Date();
         
         // show the upload panel 
         $('.uploadPanel').fadeIn();

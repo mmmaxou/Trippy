@@ -27,6 +27,7 @@
 	margin:auto;
 	margin-bottom:50px;
 	text-align:center;
+	font-weight: bold;
 }
 .wrapperCityDescription{
 	width:60%;
@@ -75,6 +76,7 @@
 	width:300px;
 	height:400px;
 }
+
 .imgPlace{
 	text-align: center;
 	height:300px;

@@ -6,9 +6,8 @@
     </head>
     <body>
         {{>yield}}
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
 </template>
 
 <template name="home">
@@ -33,4 +32,8 @@
         {{/each}}
         {{isotope}}
     </div>
+</template>
+
+<template name="queries">
+    <button class="btn btn-primary" id="fullfill">Fullfill</button>
 </template>

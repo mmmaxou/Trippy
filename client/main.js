@@ -23,10 +23,11 @@ Template.citylist.events({
             itemSelector: '.grid-item',
         });
     },
-    'click #destAnchor': function(){
+    'click #destAnchor': function(e){
+        e.preventDefault();
         $('html, body').animate({
-            scrollTop: $(".mainContent").offset().top
-        }, 2000);
+            scrollTop: $("#dest").offset().top
+        }, 1000);
     }
 })
 
@@ -51,9 +52,9 @@ Template.formActivity.events({
         var comments = [];
         var editor = "TODO";
         var pictures = [];
-        
+
         console.log(name, description, datestart, dateend, nature)
-    
+
         Test.insert({
             name,
             description,
@@ -64,13 +65,13 @@ Template.formActivity.events({
             editor,
             pictures
         });
-                
+
         //Go back home
         //Change it later to go to the new page
         window.location.href = "../";
-        
+
     },
-    
+
     'change input[type=radio]' : function(){
         var input = $("#event");
         if ( input.prop("checked") == false) {

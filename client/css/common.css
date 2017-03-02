@@ -77,3 +77,8 @@ footer {
     text-align: center;
     padding-top: 30px;
 }
+
+/* TOAST FIX */
+#toast-container.toast-top-full-width {
+    width: 100%;
+}

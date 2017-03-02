@@ -44,8 +44,6 @@ Template.citylist.events({
                 $('.home').fadeOut(300);
             }
         });
-        
-        isAdmin();
     },
     'click #destClick': function(){
         $('html, body').animate({
@@ -129,7 +127,7 @@ Template.cities.events({
         }
 
         Meteor.call("addComment", city, comment, "city");
-        toastr.success("Comment added !")
+        toastSuccess("Comment added !")
         $('#sectionAdd').fadeOut();
         target.comment.value = "";
     },
@@ -181,11 +179,9 @@ Template.cities.events({
             
             if ( check ) {
                 Meteor.call("addLike", city, "city", user);
-            } else {
-                toastr.options = {
-                    "timeOut": "2000"
-                }
-                toastr.error("You already liked !");
+                toastSuccess("Successfully liked")   
+            } else {  
+                toastError("You already liked !");
             }
         }
     }
@@ -317,7 +313,7 @@ Template.activities.events({
         }
 
         Meteor.call("addComment", activity, comment, "activity");
-        toastr.success("Comment added !")
+        toastSuccess("Comment added !")
         $('#sectionAdd').fadeOut();
         target.comment.value = "";
     },
@@ -341,11 +337,9 @@ Template.activities.events({
             
             if ( check ) {
                 Meteor.call("addLike", activity, "activity", user);
+                toastSuccess("Successfully liked")                
             } else {
-                toastr.options = {
-                    "timeOut": "2000"
-                }
-                toastr.error("You already liked !");
+                toastError("You already liked !");
             }
         }
     },
@@ -378,6 +372,46 @@ Template.activities.events({
 })
 
 //Return 
+function toastError (text) {         
+    toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-top-full-width",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "2000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+    toastr.error(text);
+}
+function toastSuccess (text) {         
+    toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-top-full-width",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "2000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+    toastr.success(text);
+}
 function isConnected() {
     var user = Meteor.user();
     if (user != null) {

@@ -24,12 +24,13 @@ Template.cities.helpers({
         return Activities.find();
     },
     isAnEvent: function(nature){
-        console.log("nature:"+nature)
         return nature === "event";
     },
     isAPlace: function(nature){
-        console.log("nature:"+nature)
         return nature === "place";
+    },
+    isConnected : function () {
+        return isConnected()
     }
 });
 
@@ -154,6 +155,11 @@ Template.cityAdd.events({
     }
 });
 
+Template.activities.helpers({
+    isConnected : function () {
+        return isConnected()
+    }
+})
 Template.activities.events({
     'click #commentAdd': function(){
         $('#sectionAdd').fadeIn();
@@ -178,14 +184,18 @@ Template.activities.events({
         target.comment.value = "";
     },
     'click #like': function(){
-        if(Meteor.user() != null) {
+        var user = isConnected();
+        if(user != null) {
             var activity = this;
-            var user = Meteor.user()._id;
+            
+            //Regarde si l'utilisateur a déjà liké dans la database de l'activité
             var check = !activity.usersLiking.some(function(e){
                 return e == user;
             })
+            
             console.log("User : " + user)
             console.log("Check : " + check)
+            
             if ( check ) {
                 Meteor.call("addLike", activity, user);
             } else {
@@ -202,3 +212,12 @@ Template.activities.events({
         }
     }
 })
+
+//Return 
+function isConnected () {
+    var user = Meteor.user();
+    if (user != null) {
+        return true;
+    }
+    return false;
+}

@@ -119,6 +119,7 @@
 				</div>
 			{{/each}}
 		</div>
+    {{#if isConnected}}
         <div class="commentsAdd">
             <button id="commentAdd">Ajouter un commentaire</button>
             <form id="sectionAdd" style="display:none;">
@@ -131,7 +132,8 @@
 <!--    LIKE BUTTON-->
     <div class="likeSection">
         <button id="like">LIKE THIS PAGE</button>
-        <p>Number of likes : {{like}}</p>
     </div>
+    {{/if}}
+    <p>Number of likes : {{like}}</p>
 
 </template>

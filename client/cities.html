@@ -91,14 +91,16 @@
 			{{/each}}
 		</div>
 	</div>
+    {{#if isConnected}}
 	<div class="addActivity">
 		<div class="wrapperTextTitle">
-			<p>Add an Activity</p>
+			<p>Add a City</p>
 		</div>
 		<div class="formAddCity">
 			{{>formActivity}}
 		</div>
 	</div>
+    {{/if}}
 	<div class="temperatures">
 		<div class="wrapperTextTitle">
 			<p>Temperatures</p>

@@ -20,7 +20,6 @@ accounts-ui
 accounts-password
 dburles:google-maps
 chart:chart
-http
 autopublish
 insecure
 twbs:bootstrap
@@ -34,3 +33,4 @@ okgrow:router-autoscroll
 mrt:toastjs
 chrismbeckett:toastr
 matb33:bootstrap-carousel
+http

@@ -48,7 +48,7 @@ Template.citylist.events({
             },
             itemSelector: '.grid-item',
         });
-        $(window).scroll(function(){                          
+        $(window).scroll(function(){
             if ($(this).scrollTop() > 150) {
                 $('.home').fadeIn(300);
             } else {
@@ -59,7 +59,7 @@ Template.citylist.events({
     'click #destClick': function(){
         $('html, body').animate({
             scrollTop: $("#dest").offset().top
-        }, 1000);      
+        }, 1000);
     },
     'click #sort_az': function(){
         $('.grid').isotope({
@@ -172,11 +172,12 @@ Template.activities.events({
         event.preventDefault();
         console.log("working");
 
-        var activity = this;      
+        var activity = this;
         var comment = {};
         const target = event.target;
         comment.text = target.comment.value;
-        comment.date = new Date();
+        var d = new Date();
+        comment.date = d.toDateString();
         comment.user = {
             _id : Meteor.user()._id,
             email : Meteor.user().emails[0].address

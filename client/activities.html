@@ -107,12 +107,12 @@
 -->
 	<div class="comments">
 		<div class="wrapperTextTitle">
-			<p>Comments</p>
+			<p>Trippy trips</p>
 		</div>
 		<div class="wrapperComments">
 			{{#each c in comments}}
 				<div class="headerComment">
-					<p>User : {{c.user.email}} - Date : {{c.date}}</p>
+					<p>Usern : {{c.user.email}}  Wrote this on : {{c.date}}</p>
 				</div>
 				<div class="commentsContent">
 					<p>{{c.text}}</p>
@@ -120,10 +120,10 @@
 			{{/each}}
 		</div>
         <div class="commentsAdd">
-            <button id="commentAdd">Ajouter un commentaire</button>
+            <button class="btnComs" id="commentAdd">Ajouter un commentaire</button>
             <form id="sectionAdd" style="display:none;">
-                <textarea id="comment" name="comment"></textarea>
-                <input type="submit" name="submit" value="Comment !" />
+                <textarea id="comment" name="comment"></textarea><br/>
+                <input  class="btnComs" type="submit" name="submit" value="Comment !" />
             </form>
         </div>
 	</div>

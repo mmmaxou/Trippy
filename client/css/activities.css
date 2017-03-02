@@ -29,11 +29,80 @@
 }
 
 .comments{
-	text-align:center;
+	margin:auto;
+	width:40%;
+	min-width:600px;
 }
 
 .likeSection{
 	text-align:center;
 	margin-bottom:150px;
 	margin-top:50px;
+}
+
+.wrapperComments{
+	width:100%;
+}
+
+.headerComment{
+	font-weight:bold;
+	margin:auto;
+	text-align:center;
+	border-top: 1px solid black;
+	padding-top: 30px;
+	background-color:#f2f2f2;
+	margin-bottom:-10px;
+	padding-bottom: 30px;
+}
+.commentsContent{
+	margin-bottom:100px;
+	padding:20px;
+
+	background-color:#f6f6f6;
+}
+
+.commentsAdd{
+	margin:auto;
+	text-align:center;
+}
+
+#sectionAdd{
+	margin:auto;
+	text-align:center;
+}
+
+#commentAdd{
+	margin:auto;
+	text-align:center;
+	margin-bottom:50px;
+	border:none;
+	padding:20px;
+	transition:all 0.5s ease;
+}
+#commentAdd:hover{
+	background-color:#EB5A55;
+	color:white;
+}
+
+#comment{
+	width:800px;
+	height:400px;
+	margin-bottom:50px;
+
+}
+textarea{
+	resize: none;
+}
+
+.btnComs{
+	margin:auto;
+	text-align:center;
+	margin-bottom:50px;
+	border:none;
+	padding:20px;
+	transition:all 0.5s ease;
+}
+.btnComs:hover{
+	background-color:#EB5A55;
+	color:white;
 }

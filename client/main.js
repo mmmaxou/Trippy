@@ -33,6 +33,13 @@ Template.cities.helpers({
     }
 });
 
+Template.navbar.helpers({
+  template: function () {
+    route = Router.current();
+    return route? route.lookupTemplate() : 'home';
+  }
+});
+
 Template.citylist.events({
     'load *': function(){
         $('.grid').isotope({

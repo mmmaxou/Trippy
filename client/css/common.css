@@ -41,8 +41,12 @@ body {
 
 #login-buttons {
     text-transform: uppercase;
+}
+
+#login-buttons a {
     text-decoration: none;
-    color: white;
+    color: black;
+    font-weight: bold;
 }
 
 .mainContent {

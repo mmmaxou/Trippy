@@ -1,5 +1,4 @@
 <template name="activities">
-	{{>navbar}}
 	<div class="activitiesTitleWrapper">
 		<div class="wrapperActivitiesHeaderText">
 			<p class="activitiesHeaderText">{{name}}</p>
@@ -11,27 +10,31 @@
 		</div>
 		<div class="wrapperCityDescription">
 			<p>{{description}}</p>
+            {{#if isAdmin}}
+            <button id="descriptionButton">Edit</button>
+            <button id="descriptionButtonCancel" style="display:none;">Cancel</button>
+            {{/if}}
 		</div>
 		<div class="usefulLinks">
 			<ul>
 				<li>
-						<span class="usefulLinksTitle">Awesome website</span> :<br/>
-						<p>Short description of what the website is currently doing.<br/>
+				<span class="usefulLinksTitle">Awesome website</span> :<br/>
+				    <p>Short description of what the website is currently doing.<br/>
 						http://awesomewebsite.com
 						</p>
 				</li>
-					<li>
-							<span class="usefulLinksTitle">Awesome website</span> :<br/>
-							<p>Short description of what the website is currently doing.<br/>
+				<li>
+				    <span class="usefulLinksTitle">Awesome website</span> :<br/>
+					<p>Short description of what the website is currently doing.<br/>
 							http://awesomewebsite.com
 							</p>
-					</li>
-						<li>
-								<span class="usefulLinksTitle">Awesome website</span> :<br/>
-								<p>Short description of what the website is currently doing.<br/>
-								http://awesomewebsite.com
-								</p>
-						</li>
+				</li>
+				<li>
+				    <span class="usefulLinksTitle">Awesome website</span> :<br/>
+					<p>Short description of what the website is currently doing.<br/>
+					http://awesomewebsite.com
+					</p>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -40,52 +43,6 @@
 			<p>How to go to this city</p>
 		</div>
 		 {{>maps}}
-	</div>
-<!--
-	<div class="places">
-		<div class="wrapperTextTitle">
-			<p>Places to visit</p>
-		</div>
-		<div class="gridPlaces fix-it">
-			{{#each c in activities}}
-				<a href="/activities/{{c._id}}">
-					<div class="place">
-						<div class="wrapperPlace">
-							<div class="imgPlace">
-								<div class="darkerPhoto"></div>
-								<img src="{{c.pictures.[0]}}" alt="c.name"/>
-
-							</div>
-							<div class="placeCaption">
-								{{c.name}}
-							</div>
-						</div>
-					</div>
-				</a>
-			{{/each}}
-		</div>
-	</div>
-	<div class="places">
-		<div class="wrapperTextTitle">
-			<p>Activities to do</p>
-		</div>
-		<div class="gridPlaces fix-it">
-			{{#each c in activities}}
-				{{#if isAnEvent nature}}
-					<div class="place">
-						<div class="wrapperPlace">
-							<div class="imgPlace">
-								<img src="{{c.pictures.[0]}}" alt="c.name"/>
-								<div class="darkerPhoto"></div>
-							</div>
-							<div class="placeCaption">
-								{{c.name}}
-							</div>
-						</div>
-					</div>
-				{{/if}}
-			{{/each}}
-		</div>
 	</div>
 
 	<div class="addActivity">
@@ -96,15 +53,7 @@
 			{{>formActivity}}
 		</div>
 	</div>
-	<div class="temperatures">
-		<div class="wrapperTextTitle">
-			<p>Temperatures</p>
-		</div>
-		<div class="wrapperCharts">
-			<canvas id="chart" width="800px" height="400px"></canvas>
-		</div>
-	</div>
--->
+    
 	<div class="comments">
 		<div class="wrapperTextTitle">
 			<p>Trippy trips</p>
@@ -119,6 +68,7 @@
 				</div>
 			{{/each}}
 		</div>
+        {{#if isConnected}}
         <div class="commentsAdd">
             <button class="btnComs" id="commentAdd">Ajouter un commentaire</button>
             <form id="sectionAdd" style="display:none;">
@@ -126,11 +76,14 @@
                 <input  class="btnComs" type="submit" name="submit" value="Comment !" />
             </form>
         </div>
+        {{/if}}
 	</div>
 
 <!--    LIKE BUTTON-->
     <div class="likeSection">
+        {{#if isConnected}}
         <button id="like">LIKE THIS PAGE</button>
+        {{/if}}
         <p>Number of likes : {{like}}</p>
     </div>
 

@@ -9,7 +9,11 @@
             <p>Info & Useful links</p>
         </div>
         <div class="wrapperCityDescription">
-            <p>{{{description}}}</p>
+            <p>{{description}}</p>
+            {{#if isAdmin}}
+            <button id="descriptionButton">Edit</button>
+            <button id="descriptionButtonCancel" style="display:none;">Cancel</button>
+            {{/if}}
         </div>
         <div class="usefulLinks">
             <ul>
@@ -44,7 +48,7 @@
         <div class="wrapperTextTitle">
             <p>Places to visit</p>
         </div>
-        <div class="gridPlaces fix-it">
+        <div id="placeWrapper" class="gridPlaces fix-it">
             {{#each c in activities}}
             {{#if isAPlace c.nature}}
             <a href="/activities/{{c._id}}">
@@ -52,8 +56,7 @@
                     <div class="wrapperPlace">
                         <div class="imgPlace">
                             <div class="darkerPhoto"></div>
-                            <img src="{{c.pictures.[0]}}" alt="{{c.name}}"/>
-
+                            <img src="{{c.picture}}" alt="{{c.name}}"/>
                         </div>
                         <div class="placeCaption">
                             {{c.name}}
@@ -64,19 +67,22 @@
             {{/if}}
             {{/each}}
         </div>
+        {{#if isPlaceEmpty}}
+            <p class="align-center">No places yet. Add one now !</p>
+        {{/if}}
     </div>
     <div class="places">
         <div class="wrapperTextTitle">
-            <p>Activities to do</p>
+            <p>Events</p>
         </div>
-        <div class="gridPlaces fix-it">
+        <div id="eventWrapper" class="gridPlaces fix-it">
             {{#each c in activities}}
             {{#if isAnEvent c.nature}}
             <a href="/activities/{{c._id}}">
                 <div class="place">
                     <div class="wrapperPlace">
                         <div class="imgPlace">
-                            <img src="{{c.pictures.[0]}}" alt="{{c.name}}"/>
+                            <img src="{{c.picture}}" alt="{{c.name}}"/>
                             <div class="darkerPhoto"></div>
                         </div>
                         <div class="placeCaption">
@@ -88,15 +94,21 @@
             {{/if}}
             {{/each}}
         </div>
+        {{#if isEventEmpty}}
+            <p class="align-center">No events yet. Add one now !</p>
+        {{/if}}
     </div>
+    {{#if isConnected}}
     <div class="addActivity">
         <div class="wrapperTextTitle">
             <p>Add an Activity</p>
+            <button id="displayAddActivity">+</button>
         </div>
-        <div class="formAddCity">
+        <div class="formAddCity" style="display:none;">
             {{>formActivity}}
         </div>
     </div>
+    {{/if}}
     <div class="temperatures">
         <div class="wrapperTextTitle">
             <p>Temperatures</p>
@@ -105,19 +117,38 @@
             {{>charts}}
         </div>
     </div>
-    <!--<div class="comments">
-<div class="wrapperTextTitle">
-<p>Comments</p>
-</div>
-<div class="wrapperComments">
-{{#each c in activities}}
-<div class="headerComment">
-<p>{{c.comments.user}}</p>
-</div>
-<div class="commentsContent">
 
-</div>
-{{/each}}
-</div>
-</div>-->
+    <div class="comments">
+        <div class="wrapperTextTitle">
+            <p>Comments</p>
+        </div>
+        <div class="wrapperComments">
+            {{#each c in comments}}
+				<div class="headerComment">
+					<p>User : {{c.user.email}} - Date : {{c.date}}</p>
+				</div>
+				<div class="commentsContent">
+					<p>{{c.text}}</p>
+				</div>
+			{{/each}}
+        </div>
+        {{#if isConnected}}
+        <div class="commentsAdd">
+            <button id="commentAdd">Ajouter un commentaire</button>
+            <form id="sectionAdd" style="display:none;">
+                <textarea id="comment" name="comment"></textarea>
+                <input type="submit" name="submit" value="Comment !" />
+            </form>
+        </div>
+        {{/if}}
+    </div>
+
+    <!--    LIKE BUTTON-->
+    <div class="likeSection">
+        {{#if isConnected}}
+        <button id="like">LIKE THIS PAGE</button>
+        {{/if}}
+        <p>Number of likes : {{like}}</p>
+    </div>
+
 </template>

@@ -48,25 +48,73 @@ Meteor.methods({
             }
         });
     },
-    'addComment': function(activity, comment) {
-        Activities.update({
-            _id : activity._id
-        }, {
-            $push : {
-                comments : comment
-            }
-        }) 
+    'addComment': function(object, comment, type) {
+        
+        if ( type == "city") {
+            Cities.update({
+                _id : object._id
+            }, {
+                $push : {
+                    comments : comment
+                }
+            });            
+        }
+        
+        if ( type == "activity") {        
+            Activities.update({
+                _id : object._id
+            }, {
+                $push : {
+                    comments : comment
+                }
+            });           
+        }
     },
-    'addLike': function(activity, user)  {
-        Activities.update({
-            _id : activity._id
-        }, {
-            $inc : {
-                like : 1
-            },
-            $push : {
-                usersLiking : user
-            }
-        }) 
+    'addLike': function(activity, type, user)  {
+        if ( type == "city") {
+            Cities.update({
+                _id : activity._id
+            }, {
+                $inc : {
+                    like : 1
+                },
+                $push : {
+                    usersLiking : user._id
+                }
+            })
+        }
+        
+        if ( type == "activity") {
+            Activities.update({
+                _id : activity._id
+            }, {
+                $inc : {
+                    like : 1
+                },
+                $push : {
+                    usersLiking : user._id
+                }
+            })
+        }
+    },
+    "editDescription": function (id, type, text) {
+        if ( type == "city") {
+            Cities.update({
+                _id : id
+            }, {
+                $set : {
+                    description : text
+                }
+            });   
+        }
+        if ( type == "activity") {
+            Activities.update({
+                _id : id
+            }, {
+                $set : {
+                    description : text
+                }
+            }); 
+        }
     }
 });

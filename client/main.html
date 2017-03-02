@@ -34,7 +34,6 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/" id="destLink">HOME</a></li>
                         <li><a href="">DESTINATIONS</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li>{{>loginButtons align="right"}}</li>
@@ -52,6 +51,9 @@
     <a id="dest"></a>
     <div class="container mainContent">
         <h2>DESTINATIONS</h2>
+        {{#if isConnected}}
+        <a href="/cityAdd" id='cityAdd'>Add a city</a>
+        {{/if}}
         {{>citylist}}
     </div>
 </template>
@@ -69,7 +71,7 @@
     <div class="grid">
         {{#each c in cities}}
         <a href="/cities/{{c._id}}">
-            <div class="grid-item" data-date="">
+            <div class="grid-item" data-comments="{{commentsNumber c.comments}}" data-like="{{c.like}}">
                 <div class="darkerCityPicture"></div>
                 <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
                 <div class="cityName">{{c.name}}</div>
@@ -78,7 +80,7 @@
         {{/each}}
         {{#each c in cities}}
         <a href="/cities/{{c._id}}">
-            <div class="grid-item" data-date="">
+            <div class="grid-item" data-like="{{c.like}}" data-comments="{{commentsNumber c.comments}}">
                 <div class="darkerCityPicture"></div>
                 <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
                 <div class="cityName">{{c.name}}</div>

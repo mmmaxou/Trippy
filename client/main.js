@@ -49,7 +49,7 @@ Template.citylist.events({
             itemSelector: '.grid-item',
         });
         $(window).scroll(function(){                          
-            if ($(this).scrollTop() > 200) {
+            if ($(this).scrollTop() > 150) {
                 $('.home').fadeIn(300);
             } else {
                 $('.home').fadeOut(300);
@@ -151,6 +151,16 @@ Template.cityAdd.events({
 
 
 
+    }
+});
+
+Template.home.events ({
+    'load *': function(){
+        $("#destlink").click(function(){
+            $('html,body').animate({
+                scrollTop: $("#dest").offset().top
+            },1000);
+            });
     }
 });
 

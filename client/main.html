@@ -1,7 +1,6 @@
 <template name="main">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Trippy</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
@@ -34,7 +33,7 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="destlink" href="#dest">DESTINATIONS</a></li>
+                        <li><a id="destlink" href="#">DESTINATIONS</a></li>
                         <li><a href="/about">ABOUT</a></li>
                         <li>{{>loginButtons align="right"}}</li>
                     </ul>
@@ -42,10 +41,12 @@
             </nav>
         </div>
         <div class="sliderOverlay">
-            <h1>Discover your</h1>
-            <div id="fun">Trippy Fun</div>
-            <h1>destinations, today!</h1>
-            <p><span>Now includes content of over 2000 cities carefully&nbsp;<br> tailored for you to discover!</span></p>
+            <div class="sliderText">
+                <h1>Discover your</h1>
+                <div id="fun">Trippy Fun</div>
+                <h1>destinations, today!</h1>
+                <p><span>Now includes content of over 2000 cities carefully&nbsp;<br> tailored for you to discover!</span></p>
+            </div>
         </div>
     </div>
     <a id="dest"></a>

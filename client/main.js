@@ -33,6 +33,13 @@ Template.cities.helpers({
     }
 });
 
+Template.navbar.helpers({
+  template: function () {
+    route = Router.current();
+    return route? route.lookupTemplate() : 'home';
+  }
+});
+
 Template.citylist.events({
     'load *': function(){
         $('.grid').isotope({
@@ -43,9 +50,9 @@ Template.citylist.events({
         });
         $(window).scroll(function(){                          
             if ($(this).scrollTop() > 200) {
-                $('.navbar-default').fadeIn(300);
+                $('.home').fadeIn(300);
             } else {
-                $('.navbar-default').fadeOut(300);
+                $('.home').fadeOut(300);
             }
         });
     },

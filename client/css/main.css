@@ -60,6 +60,14 @@
     z-index: 3;
 }
 
+.navbar-main #login-buttons {
+    padding-left: 20px;
+}
+
+.navbar-main #login-buttons a {
+    color: white;
+}
+
 .slider {
     text-align: center;
     color: white;

@@ -12,7 +12,7 @@ Router.route('/cities/:id', {
     data: function () {
         var id = this.params.id;
         return Cities.findOne({_id: id});
-    }    
+    }
 });
 
 Router.route('/activities/:id', {
@@ -20,7 +20,7 @@ Router.route('/activities/:id', {
     data: function () {
         var id = this.params.id;
         return Activities.findOne({_id: id});
-    }    
+    }
 });
 
 Router.route('/formActivity', {
@@ -30,6 +30,7 @@ Router.route('/formActivity', {
 Router.route('/cityAdd', {
     template: "cityAdd"
 })
+
 
 RouterAutoscroll.animationDuration = 0;
 

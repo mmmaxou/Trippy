@@ -7,7 +7,7 @@ Meteor.methods({
             finished: function (req) {
                 var fileName = "/images/" + city.name + "/" + req.name;
                 // Insert the new city in the collection here
-                
+
                 Cities.update({
                     _id : city._id
                 }, {
@@ -42,7 +42,7 @@ Meteor.methods({
                     $push : {
                         pictures : fileName
                     }
-                })    
+                })
                 //Go back home
                 document.location.href = "/";
             }
@@ -55,7 +55,7 @@ Meteor.methods({
             $push : {
                 comments : comment
             }
-        }) 
+        })
     },
     'addLike': function(activity, user)  {
         Activities.update({
@@ -67,6 +67,7 @@ Meteor.methods({
             $push : {
                 usersLiking : user
             }
-        }) 
-    }
+        })
+    },
+
 });

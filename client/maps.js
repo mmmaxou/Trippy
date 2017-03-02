@@ -10,7 +10,12 @@ Template.maps.helpers({
       // Map initialization options
       return {
         center: new google.maps.LatLng(this.coordinates['long'],this.coordinates['lat']),
-        zoom: 8
+        zoom: 8,
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        draggable: true,
       };
     }
   }

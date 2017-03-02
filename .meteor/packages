@@ -23,7 +23,7 @@ chart:chart
 http
 autopublish
 insecure
-twbs:bootstrap@=3.3.5
+twbs:bootstrap
 iron:router@=1.0.12
 isotope:isotope
 mrt:jquery-masonry
@@ -33,3 +33,4 @@ tomi:upload-jquery
 okgrow:router-autoscroll
 mrt:toastjs
 chrismbeckett:toastr
+matb33:bootstrap-carousel

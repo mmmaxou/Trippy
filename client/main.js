@@ -33,16 +33,7 @@ Template.cities.helpers({
     }
 });
 
-var scrollFunction = function(idstring) {
-    $('html, body').animate({
-        scrollTop: $(idstring).offset().top
-    }, 1000);
-};
-
 Template.citylist.events({
-    "click #destLink": function() { 
-        scrollFunction('#dest');
-    },
     'load *': function(){
         $('.grid').isotope({
             getSortData: {
@@ -50,20 +41,18 @@ Template.citylist.events({
             },
             itemSelector: '.grid-item',
         });
-        $('body').scrollspy({target: ".navbar", offset: 50});
-        $("#myNavbar a").on('click', function(event) {
-            if (this.hash !== "") {
-                event.preventDefault();
-
-                var hash = this.hash;
-
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 800, function(){
-                    window.location.hash = hash;
-                });
+        $(window).scroll(function(){                          
+            if ($(this).scrollTop() > 200) {
+                $('.navbar-default').fadeIn(300);
+            } else {
+                $('.navbar-default').fadeOut(300);
             }
         });
+    },
+    'click #destClick': function(){
+        $('html, body').animate({
+            scrollTop: $("#dest").offset().top
+        }, 1000);      
     },
     'click #sort_az': function(){
         $('.grid').isotope({ 
@@ -146,14 +135,14 @@ Template.cityAdd.events({
         // hide the submit button 
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
-        
+
 
         Cities.insert(city, function(err, objectId){
             city._id = objectId;
             Meteor.call("initUploadServerForCity", city);
         });
-        
-        
+
+
 
     }
 });
@@ -175,7 +164,7 @@ Template.activities.events({
             _id : Meteor.user()._id,
             email : Meteor.user().emails[0].address
         }
-        
+
         Meteor.call("addComment", activity, comment);
         toastr.success("Comment added !")
         $('#sectionAdd').fadeOut();
@@ -194,9 +183,9 @@ Template.activities.events({
                 Meteor.call("addLike", activity, user);
             } else {
                 toastr.options = {
-                "timeOut": "2000"
-            }
-            toastr.error("You already liked !");
+                    "timeOut": "2000"
+                }
+                toastr.error("You already liked !");
             }
         } else {
             toastr.options = {

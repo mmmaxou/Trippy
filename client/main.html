@@ -4,6 +4,7 @@
         <title>Trippy</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
     </head>
     <body>
         {{>navbar}}
@@ -16,9 +17,37 @@
 
 <template name="home">
     <div class="slider">
-        <!-- Insert full screen slider with images HERE -->
-        <h1>SLOGAN</h1>
-        <p>DESCRIPTION OF WEBSITE</p>
+        <div class="container">
+            <nav class="navbar navbar-main" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <a class="navbar-brand-main" href="/"><img src="/images/logos/Logo.png" alt="Trippy Logo"></a>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left">
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/" id="destLink">HOME</a></li>
+                        <li><a href="">DESTINATIONS</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li>{{>loginButtons align="right"}}</li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="sliderOverlay">
+            <h1>Discover your</h1>
+            <div id="fun">Trippy Fun</div>
+            <h1>destinations, today!</h1>
+            <p>Now includes content of over 2000 cities carefully tailored for you to discover!</p>
+        </div>
     </div>
     <a id="dest"></a>
     <div class="container mainContent">
@@ -45,7 +74,16 @@
                 <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
                 <div class="cityName">{{c.name}}</div>
             </div>
-    </a>
+        </a>
+        {{/each}}
+        {{#each c in cities}}
+        <a href="/cities/{{c._id}}">
+            <div class="grid-item" data-date="">
+                <div class="darkerCityPicture"></div>
+                <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
+                <div class="cityName">{{c.name}}</div>
+            </div>
+        </a>
         {{/each}}
     </div>
 </template>

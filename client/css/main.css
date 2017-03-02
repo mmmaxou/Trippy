@@ -1,10 +1,87 @@
+.navbar-default {
+    display: none;
+}
+
+.navbar-main .navbar-nav > li > a {
+    color: white;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.navbar-main .navbar-nav > li:hover {
+    background-color: white;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+}
+
+.navbar-main .navbar-nav > li:hover a {
+    color: black;
+}
+
+.navbar-main .navbar-nav > li {
+    line-height: 40px;
+    height: 40px;
+}
+
+.navbar-main .navbar-nav > li > a:hover,
+.navbar-main .navbar-nav > li > a:focus {
+    background: white;
+}
+
+.navbar-main .navbar-nav > .active > a, 
+.navbar-main .navbar-nav > .active > a:hover, 
+.navbar-main .navbar-nav > .active > a:focus {
+    
+}
+
+.navbar-brand-main {
+    line-height: 180px;
+    height: 180px;
+    padding-top: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.navbar-brand-main img {
+    width: 160px;
+    margin-top: -20px;
+}
+
+.navbar-main .navbar-nav li {
+    padding-top: 50px;
+}
+
+.navbar-toggle {
+    z-index: 3;
+}
+
 .slider {
     text-align: center;
-    margin-top: 70px;
-    padding-top: 200px;
-    height: 600px;
-    background-color: black;
     color: white;
+    height: 100vh;
+    width: 100%;
+    background: url(/images/banners/banner3.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.sliderOverlay {
+    margin-top: 180px;
+}
+
+#fun {
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Lobster', cursive;
+    font-size: 90px;
+    margin-top: -40px;
+    margin-bottom: -30px;
 }
 
 #dest {

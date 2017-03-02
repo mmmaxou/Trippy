@@ -38,7 +38,7 @@ Template.citylist.events({
             stagger: 50
         });
         $(window).scroll(function(){                          
-            if ($(this).scrollTop() > 200) {
+            if ($(this).scrollTop() > 150) {
                 $('.home').fadeIn(300);
             } else {
                 $('.home').fadeOut(300);
@@ -287,6 +287,17 @@ Template.activities.helpers({
         return isAdmin()
     }
 })
+
+Template.home.events ({
+    'load *': function(){
+        $("#destlink").click(function(){
+            $('html,body').animate({
+                scrollTop: $("#dest").offset().top
+            },1000);
+            });
+    }
+});
+
 Template.activities.events({
     'click #commentAdd': function(){
         $('#sectionAdd').fadeIn();

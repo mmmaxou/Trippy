@@ -15,10 +15,24 @@
 		</div>
 		<div class="usefulLinks">
 			<ul>
-				<li>blablablabl</li>
-				<li>blablablabl</li>
-				<li>blablablabl</li>
-				<li>blablablabl</li>
+				<li>
+						<span class="usefulLinksTitle">Awesome website</span> :<br/>
+						<p>Short description of what the website is currently doing.<br/>
+						http://awesomewebsite.com
+						</p>
+				</li>
+					<li>
+							<span class="usefulLinksTitle">Awesome website</span> :<br/>
+							<p>Short description of what the website is currently doing.<br/>
+							http://awesomewebsite.com
+							</p>
+					</li>
+						<li>
+								<span class="usefulLinksTitle">Awesome website</span> :<br/>
+								<p>Short description of what the website is currently doing.<br/>
+								http://awesomewebsite.com
+								</p>
+						</li>
 			</ul>
 		</div>
 	</div>
@@ -26,9 +40,7 @@
 		<div class="wrapperTextTitle">
 			<p>How to go to this city</p>
 		</div>
-		 <div class="map-container">
-			{{> googleMap name="map" options=mapOptions}}
-		  </div>
+		{{>maps}}
 	</div>
 	<div class="places">
 		<div class="wrapperTextTitle">
@@ -43,15 +55,15 @@
 							<div class="imgPlace">
 								<div class="darkerPhoto"></div>
 								<img src="{{c.pictures.[0]}}" alt="{{c.name}}"/>
-								
+
 							</div>
 							<div class="placeCaption">
 								{{c.name}}
 							</div>
 						</div>
-					</div>    		
-				</a>        
-				{{/if}}		
+					</div>
+				</a>
+				{{/if}}
 			{{/each}}
 		</div>
 	</div>
@@ -92,7 +104,7 @@
 			<p>Temperatures</p>
 		</div>
 		<div class="wrapperCharts">
-			<canvas id="chart" width="800px" height="400px"></canvas>
+			{{>charts}}
 		</div>
 	</div>
 	<!--<div class="comments">
@@ -105,7 +117,7 @@
 					<p>{{c.comments.user}}</p>
 				</div>
 				<div class="commentsContent">
-					
+
 				</div>
 			{{/each}}
 		</div>

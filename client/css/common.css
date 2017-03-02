@@ -39,6 +39,12 @@ body {
     height: 50px;
 }
 
+#login-buttons {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
 .mainContent {
     margin-bottom: 80px;
 }

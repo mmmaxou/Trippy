@@ -55,14 +55,14 @@ Template.citylist.events({
         }, 1000);      
     },
     'click #sort_az': function(){
-        $('.grid').isotope({ 
+        $('.grid').isotope({
             sortBy: 'name'
-        });        
+        });
     },
     'click #sort_date': function(){
-        $('.grid').isotope({ 
+        $('.grid').isotope({
             sortBy: 'original-order'
-        });        
+        });
     }
 })
 
@@ -71,7 +71,7 @@ Template.formActivity.events({
         event.preventDefault();
 
         var city = this || {picture: '/images/Aix/aix.jpg'};
-        var activity = {};       
+        var activity = {};
 
         const target = event.target;
 
@@ -90,9 +90,9 @@ Template.formActivity.events({
         console.log("city :", city)
         console.log(Meteor.userId())
 
-        // show the upload panel 
+        // show the upload panel
         $('.uploadPanel').fadeIn();
-        // hide the submit button 
+        // hide the submit button
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
         // TODO
@@ -107,7 +107,7 @@ Template.formActivity.events({
     'change input[type=radio]' : function(){
         var input = $("#event");
         if ( input.prop("checked") == false) {
-            $('#dates').fadeOut();            
+            $('#dates').fadeOut();
         } else { $('#dates').fadeIn();}
     },
 });
@@ -115,7 +115,7 @@ Template.formActivity.events({
 Template.cityAdd.events({
     'submit form': function (event) {
         event.preventDefault();
-        var city = {};       
+        var city = {};
 
         const target = event.target;
 
@@ -130,9 +130,9 @@ Template.cityAdd.events({
             email : Meteor.user().emails[0].address
         }
 
-        // show the upload panel 
+        // show the upload panel
         $('.uploadPanel').fadeIn();
-        // hide the submit button 
+        // hide the submit button
         $('#submit').fadeOut();
         // find the document corresponding to the user (his id is Meteor.userId())
 
@@ -157,7 +157,7 @@ Template.activities.events({
 
         var activity = this;      
         var comment = {};
-        const target = event.target;        
+        const target = event.target;
         comment.text = target.comment.value;
         comment.date = new Date();
         comment.user = {
@@ -168,7 +168,7 @@ Template.activities.events({
         Meteor.call("addComment", activity, comment);
         toastr.success("Comment added !")
         $('#sectionAdd').fadeOut();
-        target.comment.value = "";        
+        target.comment.value = "";
     },
     'click #like': function(){
         if(Meteor.user() != null) {

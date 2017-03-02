@@ -15,3 +15,25 @@
 	font-weight:bold;
 }
 
+.usefulLinks{
+	text-align:center;
+	margin-bottom:100px;
+	margin-top:50px;
+}
+.usefulLinks li{
+	list-style: none;
+	margin-bottom:20px;
+}
+.usefulLinksTitle{
+	font-weight:bold;
+}
+
+.comments{
+	text-align:center;
+}
+
+.likeSection{
+	text-align:center;
+	margin-bottom:150px;
+	margin-top:50px;
+}

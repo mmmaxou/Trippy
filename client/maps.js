@@ -3,12 +3,13 @@ Template.maps.onRendered(function() {
 });
 
 Template.maps.helpers({
+
   mapOptions: function() {
     // Make sure the maps API has loaded
     if (GoogleMaps.loaded()) {
       // Map initialization options
       return {
-        center: new google.maps.LatLng(-37.8136, 144.9631),
+        center: new google.maps.LatLng(this.coordinates['long'],this.coordinates['lat']),
         zoom: 8
       };
     }

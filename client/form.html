@@ -1,21 +1,40 @@
 <template name="formActivity">
-    <form class="new-task">
-        <span class="titleFormActivity">Add activity name :</span><br/>
-        <input type="text" name="name" />
-
-        <br> <span class="titleFormActivity">Add activity nature :</span><br/>
-        Event<input id="event" type="radio" name="nature" value="event" />
-        Place<input type="radio" name="nature" value="place" />
-        <br> <span class="titleFormActivity">Add activity Description :</span><br/>
-        <textarea rows="4" cols="20" name="description"></textarea>
-
-        <br>
-        <div id="dates" style="display:none;">
-            <input type="date" name="datestart" placeholder="start date"/>
-            <input type="date" name="dateend" placeholder="end date"/>
-        </div>
-
-        <input id="submit" type="submit" value="Create">
-    </form>
-    {{> upload_bootstrap multiple=true}}
+    <div class="mainContent container" id="cityAdd">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="name" class="control-label col-sm-1">Name:</label>
+                <div class="col-sm-11">
+                    <input type="text" name="name" class="form-control" placeholder="Enter activity name" required autofocus/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nature" class="control-label col-sm-1">Nature:</label>
+                <div class="col-sm-11">
+                    <input id="event" type="radio" name="nature" value="event" />Event&nbsp;
+                    <input type="radio" name="nature" value="place" />Place
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="description">Description:</label>
+                <div class="col-sm-11"> 
+                    <textarea class="form-control" rows="20" name="description" placeholder="Enter the activity description" required></textarea>
+                </div>
+            </div>
+            <div class="form-group" id="dates" style="display:none;">
+                <label class="control-label col-sm-1" for="date">Date:</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="datestart" placeholder="start date"/>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="dateend" placeholder="end date"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <button id="submit" type="submit" class="btn btn-default">Create</button>
+                </div>
+            </div>
+        </form>
+        {{> upload_bootstrap multiple=true}}
+    </div>
 </template>

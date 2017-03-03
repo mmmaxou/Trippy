@@ -210,6 +210,32 @@ Template.cities.events({
                 .text(this.description);        
         $('#descriptionButtonCancel').fadeOut();
         $('#descriptionButton').text("Edit");
+    },
+    'click #like': function(){
+        var user = isConnected();
+        if(user != null) {
+            user = Meteor.user();
+            var city = this;
+            
+            //Regarde si l'utilisateur a déjà liké dans la database de l'activité
+            if ( city.usersLiking != null ) {
+                var check = !city.usersLiking.some(function(e){
+                    return e == user._id;
+                })
+            } else {
+                var check = true;
+            }
+            
+            console.log("User : " + user)
+            console.log("Check : " + check)
+            
+            if ( check ) {
+                Meteor.call("addLike", city, "city", user);
+                toastSuccess("Successfully liked!")   
+            } else {  
+                toastError("You already liked!");
+            }
+        }
     }
 })
 */

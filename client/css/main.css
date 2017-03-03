@@ -114,7 +114,13 @@
     visibility: hidden;
 }
 
+#cityAddButton {
+    float: right;
+    margin-top: -42px;
+}
+
 .filter {
+    clear: both;
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;

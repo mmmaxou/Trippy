@@ -1,16 +1,38 @@
 <template name="cityAdd">
-    <form class="new-task">
-        Add city name :    
-        <input type="text" name="name" />        
-        <br> Add city Description :
-        <textarea rows="4" cols="20" name="description"></textarea>
-        <br> Coordinates
-        <br> Longitude : 
-        <input type="text" name="long" /> 
-        <br> Latitude : 
-        <input type="text" name="lat" /> 
-        
-        <input id="submit" type="submit" value="Create">
-    </form>
-    {{> upload_bootstrap}}
+    <div class="mainContent container" id="cityAdd">
+        <h2>Add a New City</h2>
+        <a href="/" id='homeButton' class="btn btn-danger" role="button"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>Cancel</a>
+        <form class="new-task form-horizontal">
+            <div class="form-group">
+                <label for="name" class="control-label col-sm-1">Name:</label>
+                <div class="col-sm-11">
+                    <input type="text" name="name" class="form-control" placeholder="Enter city name" required autofocus/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="description">Description:</label>
+                <div class="col-sm-11"> 
+                    <textarea class="form-control" rows="20" name="description" placeholder="Enter the city description" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="long">Longitude:</label>
+                <div class="col-sm-11"> 
+                    <input type="text" class="form-control" name="long" placeholder="Enter the city longitude" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="long">Latitude:</label>
+                <div class="col-sm-11"> 
+                    <input type="text" class="form-control" name="lat" placeholder="Enter the city latitude" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <button type="submit" class="btn btn-default" id="submit">Create</button>
+                </div>
+            </div>
+        </form>
+        {{> upload_bootstrap}}
+    </div>
 </template>

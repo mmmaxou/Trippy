@@ -41,6 +41,12 @@ Template.cities.helpers({
         } else {
             return false
         }
+    },
+    commentsNumber : function() {
+        var city = this;
+        var nb = city.comments.length;
+        console.log(nb);
+        return nb;
     }
 });
 

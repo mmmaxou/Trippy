@@ -321,6 +321,11 @@ Template.activities.helpers({
         } else {
             return false
         }
+    },
+    commentsNumber : function() {
+        var activity = this;
+        var nb = activity.comments.length;
+        return nb;
     }
 })
 

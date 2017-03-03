@@ -7,7 +7,7 @@ Meteor.methods({
             finished: function (req) {
                 var fileName = "/images/" + city.name + "/" + req.name;
                 // Insert the new city in the collection here
-                
+
                 Cities.update({
                     _id : city._id
                 }, {
@@ -42,14 +42,14 @@ Meteor.methods({
                     $push : {
                         pictures : fileName
                     }
-                })    
+                })
                 //Go back home
                 document.location.href = "/";
             }
         });
     },
     'addComment': function(object, comment, type) {
-        
+
         if ( type == "city") {
             Cities.update({
                 _id : object._id
@@ -57,17 +57,17 @@ Meteor.methods({
                 $push : {
                     comments : comment
                 }
-            });            
+            });
         }
-        
-        if ( type == "activity") {        
+
+        if ( type == "activity") {
             Activities.update({
                 _id : object._id
             }, {
                 $push : {
                     comments : comment
                 }
-            });           
+            });
         }
     },
     'addLike': function(activity, type, user)  {
@@ -83,7 +83,7 @@ Meteor.methods({
                 }
             })
         }
-        
+
         if ( type == "activity") {
             Activities.update({
                 _id : activity._id
@@ -105,7 +105,7 @@ Meteor.methods({
                 $set : {
                     description : text
                 }
-            });   
+            });
         }
         if ( type == "activity") {
             Activities.update({
@@ -114,7 +114,7 @@ Meteor.methods({
                 $set : {
                     description : text
                 }
-            }); 
+            });
         }
     }
 });

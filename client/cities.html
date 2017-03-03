@@ -6,7 +6,7 @@
     </div>
     <div class="info">
         <div class="wrapperTextTitle">
-            <p>Info & Useful links</p>
+            <p>Info & Helpful Links</p>
         </div>
         <div class="wrapperCityDescription">
             <p>{{description}}</p>
@@ -40,7 +40,7 @@
     </div>
     <div class="gmaps">
         <div class="wrapperTextTitle">
-            <p>How to go to this city</p>
+            <p>Where is this city?</p>
         </div>
         {{>maps}}
     </div>
@@ -93,7 +93,7 @@
             </a>
             {{/if}}
             {{/each}}
-        </div>        
+        </div>
         {{#if isEventEmpty}}
             <p class="align-center">No events yet. Add one now !</p>
         {{/if}}
@@ -111,16 +111,16 @@
     {{/if}}
     <div class="temperatures">
         <div class="wrapperTextTitle">
-            <p>Temperatures</p>
+            <p>Temperature</p>
         </div>
         <div class="wrapperCharts">
             {{>charts}}
         </div>
     </div>
-    
+
     <div class="comments">
         <div class="wrapperTextTitle">
-            <p>Comments</p>
+            <p>Trippy Tips</p>
         </div>
         <div class="wrapperComments">
             {{#each c in comments}}
@@ -134,7 +134,7 @@
         </div>
         {{#if isConnected}}
         <div class="commentsAdd">
-            <button id="commentAdd">Ajouter un commentaire</button>
+            <button id="commentAdd">Submit a Tip</button>
             <form id="sectionAdd" style="display:none;">
                 <textarea id="comment" name="comment"></textarea>
                 <input type="submit" name="submit" value="Comment !" />
@@ -142,7 +142,7 @@
         </div>
         {{/if}}
     </div>
-    
+
     <!--    LIKE BUTTON-->
     <div class="likeSection">
         {{#if isConnected}}
@@ -150,5 +150,5 @@
         {{/if}}
         <p>Number of likes : {{like}}</p>
     </div>
-    
+
 </template>

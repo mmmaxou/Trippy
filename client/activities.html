@@ -6,11 +6,11 @@
 	</div>
 	<div class="likesCommentsCount">
             {{#if isConnected}}
-            {{#if userAlreadyLiked}}
-            <i class="fa fa-heart likeTrue" id="like" aria-hidden="true"></i>
-            {{else}}
-            <i class="fa fa-heart-o likeFalse" id="like" aria-hidden="true"></i>
-            {{/if}}
+                {{#if userAlreadyLiked}}
+                <i class="fa fa-heart likeTrue" id="like" aria-hidden="true"></i>
+                {{else}}
+                <i class="fa fa-heart-o likeFalse" id="like" aria-hidden="true"></i>
+                {{/if}}
             {{/if}}
             <div id="likeCount">{{like}}</div>
             <i class="fa fa-commenting-o" aria-hidden="true"></i>

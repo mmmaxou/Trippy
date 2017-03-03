@@ -40,6 +40,8 @@
 
 .likeTrue, .likeFalse {
     color: rgb(234, 90, 85);
+    cursor: pointer;
+    padding: 10px;
 }
 
 #commentCount {

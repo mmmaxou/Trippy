@@ -36,7 +36,6 @@ if (Meteor.isServer) {
       }
   ]
             };
-            Meteor.users.remove({});
             Meteor.users.insert(derek);
             Meteor.users.insert(gilles);
 
@@ -122,8 +121,68 @@ if (Meteor.isServer) {
                 description: "The Lille braderie is an annual street market that takes place on the weekend of the first Sunday of September in Lille. This event dates back to the 12th century and claims to be the largest such event in Europe, with over 10,000 sellers and several million attendees. The 2016 market was cancelled due to security fears because of the recent terrorism in France.",
                 url: "http://www.lille.fr"
             };
-
-
+            var granet = {
+                _id: "c0a15",
+                name: "musée Granet",
+                nature: "place",
+                editor: {
+                    _id: gilles._id,
+                    email: gilles.emails[0].address
+                },
+                pictures: ["/images/Aix/granet1.jpg", "/images/Aix/granet2.jpg"],
+                comments: [{
+                    user: {
+                        _id: derek._id,
+                        email: derek.emails[0].address
+                    },
+                    date: new Date(),
+                    text: "I love this place !!"
+  }],
+                description: "Le musée Granet présente près de 600 oeuvres de peinture, sculpture, pièces archéologiques. Peintures hollandaises, italiennes, françaises de diverses époques",
+                url: "http://museegranet-aixenprovence.fr"
+            };
+            var saintSauveur = {
+                _id: "c0a16",
+                name: "cathedral saint Sauveur",
+                nature: "place",
+                editor: {
+                    _id: gilles._id,
+                    email: gilles.emails[0].address
+                },
+                pictures: ["/images/Aix/sauveur1.jpg", "/images/Aix/sauveur2.jpg"],
+                comments: [{
+                    user: {
+                        _id: derek._id,
+                        email: derek.emails[0].address
+                    },
+                    date: new Date(),
+                    text: "great"
+  }],
+                description: "no description"
+            };
+            var festival = {
+                _id: "c0a6qwd",
+                name: "festival de musique",
+                nature: "event",
+                editor: {
+                    _id: gilles._id,
+                    email: gilles.emails[0].address
+                },
+                pictures: ["/images/Aix/festival1.png", "/images/Aix/festival1.jpg", "/images/Aix/festival2.jpg"],
+                comments: [{
+                    user: {
+                        _id: derek._id,
+                        email: derek.emails[0].address
+                    },
+                    date: new Date(),
+                    text: "Awful music"
+  }],
+                description: "Fort de son succès, le Festival d’Aix accueille un public non seulement local, mais aussi national, et un grand nombre de spectateurs et de journalistes venus du monde entier.",
+                url: "http://festival-aix.com/en",
+                dateStart: new Date('2016-6-15'),
+                dateEnd: new Date('2016-7-10')
+            };
+            
             // DUBLIN
             var templeBar = {
                 _id: "c0a0",
@@ -206,7 +265,6 @@ if (Meteor.isServer) {
                 url: "http://www.lille.fr"
             };
 
-            Activities.remove({})
             Activities.insert(grandPlace);
             Activities.insert(jdp);
             Activities.insert(beauxArts);
@@ -214,15 +272,28 @@ if (Meteor.isServer) {
             Activities.insert(templeBar);
             Activities.insert(guinness);
             Activities.insert(trinity);
-            Activities.insert(patrick);
+            Activities.insert(patrick);            
+            Activities.insert(granet);
+            Activities.insert(saintSauveur);
+            Activities.insert(festival);
+            
             // **** cities
             var dublin = {
-                _id: "c0",
+                _id: "c4",
                 name: 'Dublin',
                 coordinates: {
                     long: "53.3330600",
                     lat: "-6.2488900"
                 },
+                like: 15,
+                comments: [{
+                    user: {
+                        _id: derek._id,
+                        email: derek.emails[0].address
+                    },
+                    date: new Date(),
+                    text: "I love this event !!"
+                }],
                 description: "Dublin is the capital and largest city of Ireland. Dublin is in the province of Leinster on Ireland's east coast, at the mouth of the River Liffey. The city has an urban area population of 1,345,402. The population of the Greater Dublin Area, as of 2016, was 1,904,806 people. Founded as a Viking settlement, the Kingdom of Dublin became Ireland's principal city following the Norman invasion. The city expanded rapidly from the 17th century and was briefly the second largest city in the British Empire before the Acts of Union in 1800. Following the partition of Ireland in 1922, Dublin became the capital of the Irish Free State, later renamed Ireland.Dublin is administered by a City Council. The city is listed by the Globalization and World Cities Research Network (GaWC) as a global city, with a ranking of 'Alpha-', which places it amongst the top thirty cities in the world. It is a historical and contemporary centre for education, the arts, administration, economy and industry.",
                 picture: '/images/Dublin/dublin.jpg',
                 activities: [{
@@ -248,12 +319,13 @@ if (Meteor.isServer) {
   }]
             };
             var lille = {
-                _id: "c1",
+                _id: "c3",
                 name: 'Lille',
                 coordinates: {
                     long: "50.633333",
                     lat: "3.066667"
                 },
+                like: 3,
                 description: "Lille is the biggest city in Northern France, in French Landers. It’s a very beautiful place, and also a big student city. When you walk around the city center, if you look up you will always discover new things, such as sculptures on the roof, or on the walls that you didn’t notice before. And the people there are really, really friendly! ",
                 picture: '/images/Lille/lille.jpg',
                 activities: [{
@@ -278,7 +350,45 @@ if (Meteor.isServer) {
                     picture: braderie.pictures[0]
   }]
             };
-            Cities.remove({});
+            var aix = {
+                _id: "c0",
+                name: 'Aix en Provence',
+                coordinates: {
+                    long: "43.5263",
+                    lat: "5.4454"
+                },
+                description: "Protégée par la Montagne Sainte Victoire qui culmine à 1.011 m, Aix est entourée d'une campagne richementpréservée avec d'authentiques bastides provençales entourées de jardins à la française. Son nom vient des sources thermales découvertes à la fondation de la ville en 123 avant JC par les romains. <br />Aix en Provence était la capitale de la Provence au XVème siècle : marchands prospères et notables firent de la ville la Florence provençale que l'on connaît aujourd'hui. Demeures bourgeoises, placettes fleuries, hôtels particuliers, fontaines anciennes, ruelles ombragées... toutes les images de la Provence noble des XVII° et XVIII° sont rassemblées à Aix. <br />",
+                picture: '/images/Aix/aix.jpg',
+                activities: [{
+                    _id: granet._id,
+                    name: granet.name,
+                    nature: granet.nature,
+                    picture: granet.pictures[0]
+  }, {
+                    _id: saintSauveur._id,
+                    name: saintSauveur.name,
+                    nature: saintSauveur.nature,
+                    picture: saintSauveur.pictures[0]
+  }, {
+                    _id: festival._id,
+                    name: festival.name,
+                    nature: festival.nature,
+                    picture: festival.pictures[0]
+  }]
+            };
+            var boulogne = {
+                _id: "c1",
+                name: 'Boulogne sur mer',
+                coordinates: {
+                    long: "50.7264",
+                    lat: "1.6147"
+                },
+                description: "",
+                picture: '/images/Boulogne/centre.jpg',
+                activities: []
+            };
+            Cities.insert(aix);
+            Cities.insert(boulogne);
             Cities.insert(lille);
             Cities.insert(dublin);
         },

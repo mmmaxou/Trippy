@@ -40,9 +40,17 @@
 	</div>
 	<div class="gmaps">
 		<div class="wrapperTextTitle">
-			<p>How to go to this city</p>
+			<p>Pitcures related</p>
 		</div>
-		 {{>maps}}
+		<div class="row">
+			<!-- <div class="col-md-4"> -->
+
+					{{#each c in pictures}}
+					 <img src="{{c}}" alt="{{name}}"/>
+					{{/each}}
+			<!-- </div> -->
+		</div>
+
 	</div>
 
 

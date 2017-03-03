@@ -76,6 +76,10 @@
 	margin:auto;
 	text-align:center;
 }
+#sectionAdd input{
+	margin:auto;
+}
+
 
 #commentAdd{
 	margin:auto;
@@ -139,4 +143,13 @@ textarea{
 .btnComs:hover{
 	background-color:#EB5A55;
 	color:white;
+}
+
+
+.gmaps .row img{
+	width:400px;
+}
+.row {
+	width:60%;
+	text-align:center;
 }

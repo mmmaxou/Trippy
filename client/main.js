@@ -33,7 +33,6 @@ Template.home.events ({
                 scrollTop: $("#dest").offset().top
             },1000);
         });
-        $("#destActive").addClass("active");
     }
 });
 

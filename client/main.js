@@ -1,8 +1,8 @@
-Template.main.onRendered(function() {
-  this.autorun(function() {
-    document.title = Session.get('documentTitle');
-  });
-});
+//Template.main.onRendered(function() {
+//    this.autorun(function() {
+//        document.title = Session.get('documentTitle');
+//    });
+//});
 
 Template.queries.events({
     "click #fullfill": function() {
@@ -13,11 +13,29 @@ Template.queries.events({
     }
 });
 
+Template.navbar.helpers({
+    template: function () {
+        route = Router.current();
+        return route? route.lookupTemplate() : 'home';
+    }
+});
+
 Template.home.helpers({
     isConnected : function () {
         return isConnected()
     }
 })
+
+Template.home.events ({
+    'load *': function(){
+        $("#destlink").click(function(){
+            $('html,body').stop(true, false).animate({
+                scrollTop: $("#dest").offset().top
+            },1000);
+        });
+        $("#destActive").addClass("active");
+    }
+});
 
 Template.citylist.helpers({
     cities: function() {
@@ -27,16 +45,9 @@ Template.citylist.helpers({
         return Activities.find();
     },
     commentsNumber : function (object) {
-    if ( object == undefined) return 0;
-    return object.length;
-//        console.log("comments Number : " + object.length)
-    }
-});
-
-Template.navbar.helpers({
-    template: function () {
-        route = Router.current();
-        return route? route.lookupTemplate() : 'home';
+        if ( object == undefined) return 0;
+        return object.length;
+        //        console.log("comments Number : " + object.length)
     }
 });
 
@@ -88,12 +99,6 @@ Template.citylist.events({
 })
 
 Template.cities.helpers({
-//    cities: function() {
-//        return Cities.find();
-//    },
-//    activities: function() {
-//        return Activities.find({});
-//    },
     isAnEvent: function(nature){
         return nature === "event";
     },
@@ -291,9 +296,6 @@ Template.cityAdd.events({
             city._id = objectId;
             Meteor.call("initUploadServerForCity", city);
         });
-
-
-
     }
 });
 
@@ -305,24 +307,6 @@ Template.activities.helpers({
         return isAdmin()
     }
 })
-
-Template.home.events ({
-    'load *': function(){
-        $("#destlink").click(function(){
-            $('html,body').stop(true, false).animate({
-                scrollTop: $("#dest").offset().top
-            },1000);
-        });
-        $("#destActive").addClass("active");
-    }
-});
-
-Template.about.events ({
-//    Session.set('documentTitle', 'Awesome title');
-    'load *': function(){
-        
-    }
-});
 
 Template.activities.events({
     'click #commentAdd': function(){
@@ -353,19 +337,19 @@ Template.activities.events({
         if(user != null) {
             user = Meteor.user();
             var activity = this;
-            
+
             //Regarde si l'utilisateur a déjà liké dans la database de l'activité
             if ( activity.usersLiking != null ) {
                 var check = !activity.usersLiking.some(function(e){
                     return e == user._id;
                 })
-            } else {
-                var check = true;
-            }
-            
+                } else {
+                    var check = true;
+                }
+
             console.log("User : " + user)
             console.log("Check : " + check)
-            
+
             if ( check ) {
                 Meteor.call("addLike", activity, "activity", user);
                 toastSuccess("Successfully liked")                
@@ -384,19 +368,19 @@ Template.activities.events({
         }
         else if( $('#descriptionButton').text() == "Save") {
             $('.wrapperCityDescription > p')
-                    .attr('contenteditable', 'false')
-                    .removeClass('editable');
+                .attr('contenteditable', 'false')
+                .removeClass('editable');
             $('#descriptionButtonCancel').fadeOut();
             $('#descriptionButton').text("Edit");
-            
+
             Meteor.call("editDescription", this._id, "activity", $(".wrapperCityDescription > p").text())
         }
     },
     'click #descriptionButtonCancel' : function () {
         $('.wrapperCityDescription > p')
-                .attr('contenteditable', 'false')
-                .removeClass('editable')
-                .text(this.description);        
+            .attr('contenteditable', 'false')
+            .removeClass('editable')
+            .text(this.description);        
         $('#descriptionButtonCancel').fadeOut();
         $('#descriptionButton').text("Edit");
     }
@@ -405,44 +389,46 @@ Template.activities.events({
 //Return 
 function toastError (text) {         
     toastr.options = {
-          "closeButton": true,
-          "debug": false,
-          "newestOnTop": true,
-          "progressBar": false,
-          "positionClass": "toast-top-full-width",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "2000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
     toastr.error(text);
 }
+
 function toastSuccess (text) {         
     toastr.options = {
-          "closeButton": true,
-          "debug": false,
-          "newestOnTop": true,
-          "progressBar": false,
-          "positionClass": "toast-top-full-width",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "2000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
     toastr.success(text);
 }
+
 function isConnected() {
     var user = Meteor.user();
     if (user != null) {
@@ -460,4 +446,3 @@ function isAdmin() {
     }
     return false;
 }
-

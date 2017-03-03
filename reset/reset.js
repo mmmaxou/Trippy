@@ -134,20 +134,35 @@ if (Meteor.isServer) {
                     picture: festival.pictures[0]
   }]
             };
-            var boulogne = {
+            var lille = {
                 _id: "c1",
-                name: 'Boulogne sur mer',
+                name: 'Lille',
                 coordinates: {
-                    long: "50.7264",
-                    lat: "1.6147"
+                    long: "50.633333",
+                    lat: "3.066667"
                 },
                 description: "",
-                picture: '/images/Boulogne/centre.jpg',
-                activities: []
+                picture: '/images/Boulogne/lile.jpg',
+                activities: [{
+                    _id: granet._id,
+                    name: granet.name,
+                    nature: granet.nature,
+                    picture: granet.pictures[0]
+  }, {
+                    _id: saintSauveur._id,
+                    name: saintSauveur.name,
+                    nature: saintSauveur.nature,
+                    picture: saintSauveur.pictures[0]
+  }, {
+                    _id: festival._id,
+                    name: festival.name,
+                    nature: festival.nature,
+                    picture: festival.pictures[0]
+  }]
             };
             Cities.remove({});
             Cities.insert(aix);
-            Cities.insert(boulogne);
+            Cities.insert(lille);
         },
     })
 }

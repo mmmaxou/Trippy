@@ -32,6 +32,7 @@
 	margin:auto;
 	width:80%;
 	min-width:600px;
+	margin-bottom:150px;
 }
 
 .likeSection{
@@ -150,6 +151,5 @@ textarea{
 	width:400px;
 }
 .row {
-	width:60%;
 	text-align:center;
 }

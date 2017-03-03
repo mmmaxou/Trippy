@@ -1,4 +1,5 @@
 Template.charts.onRendered(function () {
+    Chart.defaults.global.scaleBeginAtZero = true;
     // get graphics context of canvas elements
     // and call global methods on the server
     // for data aggregation
@@ -27,7 +28,7 @@ Template.charts.onRendered(function () {
         data.labels.push(d.dt_txt);
         data.datasets[0].data.push(d.main.temp);
       }
-      new Chart(myPicture).Line(data, Chart.defaults.global);
+      let myChart = new Chart(myPicture).Line(data, Chart.defaults.global);
     });
 
   });

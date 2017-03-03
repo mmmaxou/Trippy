@@ -47,6 +47,11 @@ i {
     padding-top: 0;
 }
 
+@media screen and (max-width: 1200px) {
+    .navbar-brand-main {
+        text-align: left;
+    }
+}
 .navbar-brand img {
     margin-top: 10px;
     margin-right: 40px;
@@ -73,6 +78,10 @@ h1, h2 {
 
 h1 {
     margin: 30px;
+}
+
+a:focus {
+    outline: none;
 }
 
 footer {

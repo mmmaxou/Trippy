@@ -50,15 +50,22 @@ Template.citylist.helpers({
 });
 Template.citylist.events({
     'load *': function(){
-        $('.grid').isotope({
-            getSortData: {
-                name : ".cityName",
-                comments : "[data-comments]",
-                like : "[data-like]"
-            },
-            itemSelector: '.grid-item',
-            stagger: 50
-        });
+        
+        setTimeout(function(){
+            $('.grid').isotope({
+                getSortData: {
+                    name : ".cityName",
+                    comments : "[data-comments]",
+                    like : "[data-like]"
+                },
+                itemSelector: '.grid-item',
+                percentPosition: true,
+                stagger: 50,
+                masonry : {
+                    columnWidth: '.grid-item'
+                }
+            });
+        },1000)
         $(window).scroll(function(){
             if ($(this).scrollTop() > 150) {
                 $('.home').fadeIn(300);

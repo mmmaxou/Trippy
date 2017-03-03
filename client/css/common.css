@@ -96,3 +96,24 @@ footer {
 #toast-container.toast-top-full-width {
     width: 100%;
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1100px) {
+    .gridPlaces {
+        width: 100%;
+    }
+    #myChart {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .comments {
+        min-width: 0;
+        width: 100%;
+    }
+    .grid-item {
+        width: 100% !important;
+    }
+}

@@ -1,4 +1,23 @@
-.new-task{
-  text-align:center;
-  margin:auto;
+#cityAdd {
+    clear: both;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+#cityAdd h2 {
+    padding: 25px;
+    border-bottom: 1px solid black;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+#homeButton {
+    float: right;
+    margin-top: -78px;
+    margin-right: 20px;
+}
+
+footer {
+    clear: both;
 }

@@ -11,6 +11,11 @@ body {
     outline-offset: 15px;
     margin-bottom: 25px;
 }
+
+i {
+    margin-right: 5px;
+}
+
 .navbar-default {
     background-color: white;
     border: 2px solid #e6e6e6;

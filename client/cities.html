@@ -5,14 +5,20 @@
         </div>
     </div>
     <div class="info">
+        <div class="likesCommentsCount">
+            {{#if isConnected}}
+            <i class="fa fa-heart-o" id="like" aria-hidden="true"></i>
+            {{/if}}
+            <div id="likeCount">{{like}}</div>
+        </div>
         <div class="wrapperTextTitle">
             <p>Info & Helpful Links</p>
         </div>
         <div class="wrapperCityDescription">
             <p>{{description}}</p>
             {{#if isAdmin}}
-            <button id="descriptionButton" class="buttonStyle">Edit</button>
-            <button id="descriptionButtonCancel" class="buttonStyle" style="display:none;">Cancel</button>
+            <button id="descriptionButton" class="btn btn-danger">Edit</button>
+            <button id="descriptionButtonCancel" class="btn btn-danger" style="display:none;">Cancel</button>
             {{/if}}
         </div>
         <div class="usefulLinks">

@@ -203,16 +203,14 @@ Template.cities.events({
                 var check = true;
             }
             
-            
-            
             console.log("User : " + user)
             console.log("Check : " + check)
             
             if ( check ) {
                 Meteor.call("addLike", city, "city", user);
-                toastSuccess("Successfully liked")   
+                toastSuccess("Successfully liked!")   
             } else {  
-                toastError("You already liked !");
+                toastError("You already liked!");
             }
         }
     }

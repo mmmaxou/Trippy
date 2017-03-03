@@ -63,7 +63,6 @@
 
 .wrapperCityDescription{
     width:60%;
-    text-indent:50px;
     margin:auto;
     text-align: justify;
 }
@@ -154,4 +153,8 @@
     text-transform: uppercase;
     line-height:100px;
     font-weight:bold;
+}
+
+#displayAddActivity {
+    margin-top: 2px;
 }

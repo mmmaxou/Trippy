@@ -18,7 +18,7 @@
             <div id="commentCount">{{commentsNumber}}</div>
         </div>
         <div class="wrapperTextTitle">
-            <p>Info & Helpful Links</p>
+            <p>Info</p>
         </div>
         <div class="wrapperCityDescription">
             <p>{{description}}</p>
@@ -115,7 +115,7 @@
     <div class="addActivity">
         <div class="wrapperTextTitle">
             <p>Add an Activity</p>
-            <button id="displayAddActivity">+</button>
+            <button class="btn btn-danger" id="displayAddActivity">+</button>
         </div>
         <div class="formAddCity" style="display:none;">
             {{>formActivity}}
@@ -147,10 +147,10 @@
         </div>
         {{#if isConnected}}
         <div class="commentsAdd">
-            <button id="commentAdd">Submit a Tip</button>
+            <button class="btn btn-danger" id="commentAdd">Submit a Tip</button>
             <form id="sectionAdd" style="display:none;">
                 <textarea id="comment" name="comment"></textarea><br/>
-                <input class="btnComs" type="submit" name="submit" value="Comment !" />
+                <input class="btn btn-danger btnComs" type="submit" name="submit" value="Comment !" />
             </form>
         </div>
         {{/if}}

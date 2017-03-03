@@ -7,11 +7,15 @@
     <div class="info">
         <div class="likesCommentsCount">
             {{#if isConnected}}
-            <i class="fa fa-heart-o" id="like" aria-hidden="true"></i>
+            {{#if userAlreadyLiked}}
+            <i class="fa fa-heart likeTrue" id="like" aria-hidden="true"></i>
+            {{else}}
+            <i class="fa fa-heart-o likeFalse" id="like" aria-hidden="true"></i>
+            {{/if}}
             {{/if}}
             <div id="likeCount">{{like}}</div>
-            {{userAlreadyLiked}}
-            {{commentsNumber}}
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            <div id="commentCount">{{commentsNumber}}</div>
         </div>
         <div class="wrapperTextTitle">
             <p>Info & Helpful Links</p>
@@ -46,7 +50,7 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="gmaps">
         <div class="wrapperTextTitle">
             <p>Where is this city?</p>

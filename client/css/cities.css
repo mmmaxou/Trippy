@@ -20,16 +20,31 @@
 
 .likesCommentsCount {
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
+    margin-top: 25px;
+    font-weight: bold;
 }
 
 .likesCommentsCount i {
-    font-weight: bold;
     display: inline-block;
+}
+
+.likesCommentsCount i:nth-child(2) {
+    margin-top: -25px;
 }
 
 #likeCount {
     display: inline-block;
+    margin-right: 5px;
+}
+
+.likeTrue, .likeFalse {
+    color: rgb(234, 90, 85);
+}
+
+#commentCount {
+    display: inline-block;
+    margin-left: -2px;
 }
 
 .wrapperTextTitle{

@@ -41,15 +41,16 @@ if (Meteor.isServer) {
             Meteor.users.insert(gilles);
 
             // *** activities
-            var granet = {
+            // **** LILLE
+            var jdp = {
                 _id: "c0a0",
-                name: "musée Granet",
+                name: "Jardin des Plantes",
                 nature: "place",
                 editor: {
                     _id: gilles._id,
                     email: gilles.emails[0].address
                 },
-                pictures: ["/images/Aix/granet1.jpg", "/images/Aix/granet2.jpg"],
+                pictures: ["/images/Lille/jdp.jpg", "/images/Aix/jdp2.jpg"],
                 comments: [{
                     user: {
                         _id: derek._id,
@@ -58,9 +59,13 @@ if (Meteor.isServer) {
                     date: new Date(),
                     text: "I love this place !!"
   }],
-                description: "Le musée Granet présente près de 600 oeuvres de peinture, sculpture, pièces archéologiques. Peintures hollandaises, italiennes, françaises de diverses époques",
-                url: "http://museegranet-aixenprovence.fr"
+                description: "The Jardin des Plantes de Lille is a municipal botanical garden located on the Rue du jardin des Plantes. It is open daily without charge. It was established in 1948 as a successor of three botanical gardens in Lille. The garden is designed as a pleasure park, with botanical plots containing more than 1,500 plants grouped by families.",
+                url: "http://www.lille.fr"
             };
+
+
+
+            // DUBLIN
             var saintSauveur = {
                 _id: "c0a1",
                 name: "cathedral saint Sauveur",
@@ -103,7 +108,7 @@ if (Meteor.isServer) {
                 dateEnd: new Date('2016-7-10')
             };
             Activities.remove({})
-            Activities.insert(granet);
+            Activities.insert(jdp);
             Activities.insert(saintSauveur);
             Activities.insert(festival);
 
@@ -118,11 +123,6 @@ if (Meteor.isServer) {
                 description: "Protégée par la Montagne Sainte Victoire qui culmine à 1.011 m, Aix est entourée d'une campagne richementpréservée avec d'authentiques bastides provençales entourées de jardins à la française. Son nom vient des sources thermales découvertes à la fondation de la ville en 123 avant JC par les romains. <br />Aix en Provence était la capitale de la Provence au XVème siècle : marchands prospères et notables firent de la ville la Florence provençale que l'on connaît aujourd'hui. Demeures bourgeoises, placettes fleuries, hôtels particuliers, fontaines anciennes, ruelles ombragées... toutes les images de la Provence noble des XVII° et XVIII° sont rassemblées à Aix. <br />",
                 picture: '/images/Aix/aix.jpg',
                 activities: [{
-                    _id: granet._id,
-                    name: granet.name,
-                    nature: granet.nature,
-                    picture: granet.pictures[0]
-  }, {
                     _id: saintSauveur._id,
                     name: saintSauveur.name,
                     nature: saintSauveur.nature,
@@ -141,13 +141,13 @@ if (Meteor.isServer) {
                     long: "50.633333",
                     lat: "3.066667"
                 },
-                description: "",
-                picture: '/images/Boulogne/lile.jpg',
+                description: "Lille is the biggest city in Northern France, in French Landers. It’s a very beautiful place, and also a big student city. When you walk around the city center, if you look up you will always discover new things, such as sculptures on the roof, or on the walls that you didn’t notice before. And the people there are really, really friendly! ",
+                picture: '/images/Lille/lille.jpg',
                 activities: [{
-                    _id: granet._id,
-                    name: granet.name,
-                    nature: granet.nature,
-                    picture: granet.pictures[0]
+                    _id: jdp._id,
+                    name: jdp.name,
+                    nature: jdp.nature,
+                    picture: jdp.pictures[0]
   }, {
                     _id: saintSauveur._id,
                     name: saintSauveur.name,

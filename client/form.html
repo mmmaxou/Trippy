@@ -1,20 +1,20 @@
 <template name="formActivity">
     <form class="new-task">
-        Add activity name :    
+        <span class="titleFormActivity">Add activity name :</span><br/>
         <input type="text" name="name" />
-        
-        <br> Add activity nature :
+
+        <br> <span class="titleFormActivity">Add activity nature :</span><br/>
         Event<input id="event" type="radio" name="nature" value="event" />
         Place<input type="radio" name="nature" value="place" />
-        <br> Add activity Description :
+        <br> <span class="titleFormActivity">Add activity Description :</span><br/>
         <textarea rows="4" cols="20" name="description"></textarea>
-        
+
         <br>
         <div id="dates" style="display:none;">
             <input type="date" name="datestart" placeholder="start date"/>
             <input type="date" name="dateend" placeholder="end date"/>
         </div>
-        
+
         <input id="submit" type="submit" value="Create">
     </form>
     {{> upload_bootstrap multiple=true}}

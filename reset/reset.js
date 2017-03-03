@@ -36,6 +36,7 @@ if (Meteor.isServer) {
       }
   ]
             };
+            Meteor.users.remove({});
             Meteor.users.insert(derek);
             Meteor.users.insert(gilles);
 
@@ -182,7 +183,7 @@ if (Meteor.isServer) {
                 dateStart: new Date('2016-6-15'),
                 dateEnd: new Date('2016-7-10')
             };
-            
+
             // DUBLIN
             var templeBar = {
                 _id: "c0a0",
@@ -264,7 +265,7 @@ if (Meteor.isServer) {
                 description: "The St. Patrick’s Festival is, without a doubt, one of the most magical times to be in Dublin City. Spanning over four days (March 16 – 19) and with spectacular events taking place all over the capital, there is no better place to celebrate the arts, culture, and food that Dublin has to offer. Check out some of the festival highlights, from jigs to poetry and everything in-between... Attended by tens of thousands, the St. Patrick’s Day Parade on March 17 is the festival’s most well-known and beloved event. Kicking off at 12pm on Parnell Street, this colorful procession of eccentric performers, magical floats and joyful bands from all over the world will meander around the city center bringing the spirit of the festival to life. “Ireland You Are” is the theme for the 2017 Festival Parade, which will weave its way through the heart of the capital city in a flourish of color and flair. Marvel as Ireland’s finest street theatre companies swirl by with fantastical pageantry and raucous performances. Bands from Ireland and around the world will deliver uplifting rhythms for the spectacular procession. For history buffs, the “In the Footsteps of St. Patrick’s Walking Tour” is a must, vividly illustrating the captivating tale of St. Patrick and the Dublin of his time. Not only does the tour encapsulate some of Dublin’s most famous ancient sites including Christ Church Cathedral and St. Patrick’s Cathedral, it also shows off a unique and unexplored side of the city that Dubliners seldom see. Tours take place on March 16, 17 (2.15pm only), 18 and 19 at 10.30am and 2.15pm. ",
                 url: "http://www.lille.fr"
             };
-
+            Activities.remove({});
             Activities.insert(grandPlace);
             Activities.insert(jdp);
             Activities.insert(beauxArts);
@@ -272,11 +273,11 @@ if (Meteor.isServer) {
             Activities.insert(templeBar);
             Activities.insert(guinness);
             Activities.insert(trinity);
-            Activities.insert(patrick);            
+            Activities.insert(patrick);
             Activities.insert(granet);
             Activities.insert(saintSauveur);
             Activities.insert(festival);
-            
+
             // **** cities
             var dublin = {
                 _id: "c4",
@@ -387,6 +388,7 @@ if (Meteor.isServer) {
                 picture: '/images/Boulogne/centre.jpg',
                 activities: []
             };
+            Cities.remove({});
             Cities.insert(aix);
             Cities.insert(boulogne);
             Cities.insert(lille);

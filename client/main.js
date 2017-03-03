@@ -97,6 +97,129 @@ Template.citylist.events({
     }
 })
 
+Template.cities.helpers({
+    isAnEvent: function(nature){
+        return nature === "event";
+    },
+    isAPlace: function(nature){
+        return nature === "place";
+    },
+    isConnected : function () {
+        return isConnected()
+    },
+    isAdmin : function () {
+        return isAdmin()
+    },
+    isPlaceEmpty : function () {
+        var activity = this;
+        var isEmpty = activity.activities.some(function (e) {
+            return e.nature == "place";
+        })
+        return !isEmpty;
+    },
+    isEventEmpty : function () {
+        var activity = this;
+        var isEmpty = activity.activities.some(function (e) {
+            return e.nature == "event";
+        })
+        return !isEmpty;
+    }
+});
+Template.cities.events({
+    'click #displayAddActivity' : function () {
+        var a = $('#displayAddActivity').text();
+        if (a == "+" ) {
+            $('.formAddCity').fadeIn();
+            $('#displayAddActivity').text("-");
+        } else {
+            $('.formAddCity').fadeOut();
+            $('#displayAddActivity').text("+");
+        }
+    },
+    'click #commentAdd': function(){
+        $('#sectionAdd').fadeIn();
+    },
+    'submit form#sectionAdd': function (event) {
+        event.preventDefault();
+
+        var city = this;      
+        var comment = {};
+        const target = event.target;
+        comment.text = target.comment.value;
+        comment.date = new Date();
+        comment.user = {
+            _id : Meteor.user()._id,
+            email : Meteor.user().emails[0].address
+        }
+
+        Meteor.call("addComment", city, comment, "city");
+        toastSuccess("Comment added !")
+        $('#sectionAdd').fadeOut();
+        target.comment.value = "";
+    },
+    'click #descriptionButton' : function () {
+        if( $('#descriptionButton').text() == "Edit") {
+            $('#descriptionButtonCancel').fadeIn();
+            $('#descriptionButton').text("Save");
+            $('.wrapperCityDescription > p')
+                .attr('contenteditable', 'true')
+                .addClass('editable');
+        }
+        else if( $('#descriptionButton').text() == "Save") {
+            $('.wrapperCityDescription > p')
+                    .attr('contenteditable', 'false')
+                    .removeClass('editable');
+            $('#descriptionButtonCancel').fadeOut();
+            $('#descriptionButton').text("Edit");
+            
+            Meteor.call("editDescription", this._id, "city", $(".wrapperCityDescription > p").text())
+        }
+    },
+    'click #descriptionButtonCancel' : function () {
+        $('.wrapperCityDescription > p')
+                .attr('contenteditable', 'false')
+                .removeClass('editable')
+                .text(this.description);        
+        $('#descriptionButtonCancel').fadeOut();
+        $('#descriptionButton').text("Edit");
+    },
+    'click #like': function(){
+        var user = isConnected();
+        if(user != null) {
+            user = Meteor.user();
+            var city = this;
+            
+            //Regarde si l'utilisateur a déjà liké dans la database de l'activité
+            if ( city.usersLiking != null ) {
+                var check = !city.usersLiking.some(function(e){
+                    return e == user._id;
+                })
+            } else {
+                var check = true;
+            }
+            
+            
+            
+            console.log("User : " + user)
+            console.log("Check : " + check)
+            
+            if ( check ) {
+                Meteor.call("addLike", city, "city", user);
+                toastSuccess("Successfully liked")   
+            } else {  
+                toastError("You already liked !");
+            }
+        }
+    }
+})
+
+Template.navbar.helpers({
+  template: function () {
+    route = Router.current();
+    return route? route.lookupTemplate() : 'home';
+  }
+});
+
 Template.formActivity.events({
     'submit form': function (event) {
         event.preventDefault();

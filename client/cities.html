@@ -10,6 +10,7 @@
             <i class="fa fa-heart-o" id="like" aria-hidden="true"></i>
             {{/if}}
             <div id="likeCount">{{like}}</div>
+            {{userAlreadyLiked}}
         </div>
         <div class="wrapperTextTitle">
             <p>Info & Helpful Links</p>
@@ -44,6 +45,7 @@
             </ul>
         </div>
     </div>
+    
     <div class="gmaps">
         <div class="wrapperTextTitle">
             <p>Where is this city?</p>
@@ -125,7 +127,7 @@
     </div>
 
     <div class="comments">
-        <div class="wrapperTextTitle">
+        <div class="wrapperTextTitle" id="commentsTitle">
             <p>Trippy Tips</p>
         </div>
         <div class="wrapperComments">

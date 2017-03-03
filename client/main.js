@@ -106,11 +106,19 @@ Template.cities.helpers({
     isAdmin : function () {
         return isAdmin()
     },
-    isPlaceEmpty : function (object) {
-        return $('#placeWrapper').find("*").length == 0;
+    isPlaceEmpty : function () {
+        var activity = this;
+        var isEmpty = activity.activities.some(function (e) {
+            return e.nature == "place";
+        })
+        return !isEmpty;
     },
-    isEventEmpty : function (object) {
-        return $('#eventWrapper').find("*").length == 0;
+    isEventEmpty : function () {
+        var activity = this;
+        var isEmpty = activity.activities.some(function (e) {
+            return e.nature == "event";
+        })
+        return !isEmpty;
     }
 });
 Template.cities.events({

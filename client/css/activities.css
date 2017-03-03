@@ -55,7 +55,7 @@
 	padding-bottom: 30px;
 }
 .commentsContent{
-	margin-bottom:100px;
+	margin-bottom:50px;
 	padding:20px;
 
 	background-color:#f6f6f6;
@@ -78,7 +78,35 @@
 	border:none;
 	padding:20px;
 	transition:all 0.5s ease;
+		background-color:#EB5A55;
 }
+
+button{
+	margin:auto;
+	text-align:center;
+	margin-bottom:50px;
+	border:none;
+	padding:20px;
+	transition:all 0.5s ease;
+	background-color:#EB5A55;
+}
+button:hover{
+	color:white;
+}
+.buttonStyle{
+	margin:auto;
+	text-align:center;
+	margin-bottom:50px;
+	border:none;
+	padding:20px;
+	transition:all 0.5s ease;
+		background-color:#f2f2f2;
+}
+.buttonStyle:hover{
+	background-color:#EB5A55;
+	color:white;
+}
+
 #commentAdd:hover{
 	background-color:#EB5A55;
 	color:white;
@@ -86,7 +114,7 @@
 
 #comment{
 	width:800px;
-	height:400px;
+	height:200px;
 	margin-bottom:50px;
 
 }

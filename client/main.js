@@ -129,11 +129,16 @@ Template.cities.helpers({
 Template.cities.events({
     'click #displayAddActivity' : function () {
         var a = $('#displayAddActivity').text();
-        if (a == "+" ) {
-            $('.formAddCity').fadeIn();
+        var b = $('.formAddCity').hasClass("active");
+        if (b == false) {
+            $('.formAddCity')
+                .fadeIn()
+                .addClass("active");
             $('#displayAddActivity').text("-");
-        } else {
-            $('.formAddCity').fadeOut();
+        }  else {
+            $('.formAddCity')
+                .fadeOut()
+                .removeClass("active");
             $('#displayAddActivity').text("+");
         }
     },

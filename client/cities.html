@@ -68,7 +68,7 @@
             {{/each}}
         </div>
         {{#if isPlaceEmpty}}
-            <p class="align-center">No places yet. Add one now !</p>
+        <p class="align-center">No places yet. Add one now !</p>
         {{/if}}
     </div>
     <div class="places">
@@ -95,7 +95,7 @@
             {{/each}}
         </div>
         {{#if isEventEmpty}}
-            <p class="align-center">No events yet. Add one now !</p>
+        <p class="align-center">No events yet. Add one now !</p>
         {{/if}}
     </div>
     {{#if isConnected}}
@@ -124,13 +124,13 @@
         </div>
         <div class="wrapperComments">
             {{#each c in comments}}
-				<div class="headerComment">
-					<p>User : {{c.user.email}} - Date : {{c.date}}</p>
-				</div>
-				<div class="commentsContent">
-					<p>{{c.text}}</p>
-				</div>
-			{{/each}}
+            <div class="headerComment">
+                <p>User : {{c.user.email}} - Date : {{c.date}}</p>
+            </div>
+            <div class="commentsContent">
+                <p>{{c.text}}</p>
+            </div>
+            {{/each}}
         </div>
         {{#if isConnected}}
         <div class="commentsAdd">
@@ -142,13 +142,4 @@
         </div>
         {{/if}}
     </div>
-
-    <!--    LIKE BUTTON-->
-    <div class="likeSection">
-        {{#if isConnected}}
-        <button id="like">LIKE THIS PAGE</button>
-        {{/if}}
-        <p>Number of likes : {{like}}</p>
-    </div>
-
 </template>

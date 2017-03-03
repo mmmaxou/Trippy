@@ -25,7 +25,6 @@ Template.home.helpers({
         return isConnected()
     }
 })
-
 Template.home.events ({
     'load *': function(){
         $("#destlink").click(function(){
@@ -49,7 +48,6 @@ Template.citylist.helpers({
         //        console.log("comments Number : " + object.length)
     }
 });
-
 Template.citylist.events({
     'load *': function(){
         $('.grid').isotope({
@@ -96,7 +94,7 @@ Template.citylist.events({
         });
     }
 })
-
+/*
 Template.cities.helpers({
     isAnEvent: function(nature){
         return nature === "event";
@@ -111,19 +109,21 @@ Template.cities.helpers({
         return isAdmin()
     },
     isPlaceEmpty : function () {
-        var activity = this;
-        var isEmpty = activity.activities.some(function (e) {
+        var city = this;
+        var isEmpty = city.activities.some(function (e) {
             return e.nature == "place";
         })
         return !isEmpty;
     },
     isEventEmpty : function () {
-        var activity = this;
-        var isEmpty = activity.activities.some(function (e) {
+        var city = this;
+        var isEmpty = city.activities.some(function (e) {
             return e.nature == "event";
         })
         return !isEmpty;
     }
+    
+    
 });
 Template.cities.events({
     'click #displayAddActivity' : function () {
@@ -144,6 +144,29 @@ Template.cities.events({
     'click #commentAdd': function(){
         $('#sectionAdd').fadeIn();
     },
+    'click #like': function(){
+        var user = Meteor.user();
+        
+        if(user != null) {
+            var city = this;
+            
+            //Regarde si l'utilisateur a déjà liké dans la database de l'activité
+            if ( city.usersLiking != null ) {
+                var check = !city.usersLiking.some(function(e){
+                    return e == user._id;
+                })
+            } else {
+                var check = true;
+            }
+            
+            if ( check ) {
+                Meteor.call("addLike", city, "city", user);
+                toastSuccess("Successfully liked")   
+            } else {  
+                toastError("You already liked !");
+            }
+        }
+    },
     'submit form#sectionAdd': function (event) {
         event.preventDefault();
 
@@ -163,14 +186,14 @@ Template.cities.events({
         target.comment.value = "";
     },
     'click #descriptionButton' : function () {
-        if( $('#descriptionButton').text() == "Edit") {
+        if( $('.wrapperCityDescription > p').hasClass("editable") ) {
             $('#descriptionButtonCancel').fadeIn();
             $('#descriptionButton').text("Save");
             $('.wrapperCityDescription > p')
                 .attr('contenteditable', 'true')
                 .addClass('editable');
         }
-        else if( $('#descriptionButton').text() == "Save") {
+        else {
             $('.wrapperCityDescription > p')
                     .attr('contenteditable', 'false')
                     .removeClass('editable');
@@ -187,37 +210,9 @@ Template.cities.events({
                 .text(this.description);        
         $('#descriptionButtonCancel').fadeOut();
         $('#descriptionButton').text("Edit");
-    },
-    'click #like': function(){
-        var user = isConnected();
-        if(user != null) {
-            user = Meteor.user();
-            var city = this;
-            
-            //Regarde si l'utilisateur a déjà liké dans la database de l'activité
-            if ( city.usersLiking != null ) {
-                var check = !city.usersLiking.some(function(e){
-                    return e == user._id;
-                })
-            } else {
-                var check = true;
-            }
-            
-            
-            
-            console.log("User : " + user)
-            console.log("Check : " + check)
-            
-            if ( check ) {
-                Meteor.call("addLike", city, "city", user);
-                toastSuccess("Successfully liked")   
-            } else {  
-                toastError("You already liked !");
-            }
-        }
     }
 })
-
+*/
 Template.navbar.helpers({
   template: function () {
     route = Router.current();
@@ -309,6 +304,23 @@ Template.activities.helpers({
     },
     isAdmin : function () {
         return isAdmin()
+    },
+    userAlreadyLiked : function () {
+        var activity = this;
+        var user = Meteor.user();
+        
+        if ( activity.usersLiking != null ) {
+            var check = activity.usersLiking.some(function(e){
+                return e == user._id;
+            })
+        } else {
+            var check = false;
+        }
+        if (check) {
+            return true
+        } else {
+            return false
+        }
     }
 })
 

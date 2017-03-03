@@ -40,20 +40,19 @@
 	</div>
 	<div class="gmaps">
 		<div class="wrapperTextTitle">
-			<p>How to go to this city</p>
+			<p>Pitcures related</p>
 		</div>
-		 {{>maps}}
+		<div class="row">
+			<!-- <div class="col-md-4"> -->
+
+					{{#each c in pictures}}
+					 <img src="{{c}}" alt="{{name}}"/>
+					{{/each}}
+			<!-- </div> -->
+		</div>
+
 	</div>
 
-
-	<div class="addActivity">
-		<div class="wrapperTextTitle">
-			<p>Add an Activity</p>
-		</div>
-		<div class="formAddCity">
-			{{>formActivity}}
-		</div>
-	</div>
 
 	<div class="comments">
 		<div class="wrapperTextTitle"  id="commentsTitle">

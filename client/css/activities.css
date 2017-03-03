@@ -32,6 +32,7 @@
 	margin:auto;
 	width:80%;
 	min-width:600px;
+	margin-bottom:150px;
 }
 
 .likeSection{
@@ -76,6 +77,10 @@
 	margin:auto;
 	text-align:center;
 }
+#sectionAdd input{
+	margin:auto;
+}
+
 
 #commentAdd{
 	margin:auto;
@@ -139,4 +144,12 @@ textarea{
 .btnComs:hover{
 	background-color:#EB5A55;
 	color:white;
+}
+
+
+.gmaps .row img{
+	width:400px;
+}
+.row {
+	text-align:center;
 }

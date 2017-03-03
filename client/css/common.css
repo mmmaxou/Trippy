@@ -44,7 +44,7 @@ body {
 
 @media screen and (max-width: 1200px) {
     .navbar-brand-main {
-        text-align: left;
+        text-align: left !important;
     }
 }
 .navbar-brand img {

@@ -1,10 +1,4 @@
 Template.cities.helpers({
-    //    cities: function() {
-    //        return Cities.find();
-    //    },
-    //    activities: function() {
-    //        return Activities.find({});
-    //    },
     isAnEvent: function(nature){
         return nature === "event";
     },
@@ -17,11 +11,42 @@ Template.cities.helpers({
     isAdmin : function () {
         return isAdmin()
     },
-    isPlaceEmpty : function (object) {
-        return $('#placeWrapper').find("*").length == 0;
+    isPlaceEmpty : function () {
+        var city = this;
+        var isEmpty = city.activities.some(function (e) {
+            return e.nature == "place";
+        })
+        return !isEmpty;
     },
-    isEventEmpty : function (object) {
-        return $('#eventWrapper').find("*").length == 0;
+    isEventEmpty : function () {
+        var city = this;
+        var isEmpty = city.activities.some(function (e) {
+            return e.nature == "event";
+        })
+        return !isEmpty;
+    },
+    userAlreadyLiked : function () {
+        var city = this;
+        var user = Meteor.user();
+        
+        if ( city.usersLiking != null ) {
+            var check = city.usersLiking.some(function(e){
+                return e == user._id;
+            })
+        } else {
+            var check = false;
+        }
+        if (check) {
+            return true
+        } else {
+            return false
+        }
+    },
+    commentsNumber : function() {
+        var city = this;
+        var nb = city.comments.length;
+        console.log(nb);
+        return nb;
     }
 });
 
@@ -58,14 +83,14 @@ Template.cities.events({
         target.comment.value = "";
     },
     'click #descriptionButton' : function () {
-        if( $('#descriptionButton').text() == "Edit") {
+        if( $('.wrapperCityDescription > p').hasClass("editable") == false) {
             $('#descriptionButtonCancel').fadeIn();
             $('#descriptionButton').text("Save");
             $('.wrapperCityDescription > p')
                 .attr('contenteditable', 'true')
                 .addClass('editable');
         }
-        else if( $('#descriptionButton').text() == "Save") {
+        else {
             $('.wrapperCityDescription > p')
                 .attr('contenteditable', 'false')
                 .removeClass('editable');
@@ -94,12 +119,9 @@ Template.cities.events({
                 var check = !city.usersLiking.some(function(e){
                     return e == user._id;
                 })
-                } else {
-                    var check = true;
-                }
-
-            console.log("User : " + user)
-            console.log("Check : " + check)
+            } else {
+                var check = true;
+            }
 
             if ( check ) {
                 Meteor.call("addLike", city, "city", user);
@@ -110,3 +132,64 @@ Template.cities.events({
         }
     }
 })
+
+
+function isConnected() {
+    var user = Meteor.user();
+    if (user != null) {
+        return true;
+    }
+    return false;
+}
+
+function isAdmin() {
+    console.log("admin checking")
+    if ( isConnected() ) {
+        var user = Meteor.user();
+        if( Admins.findOne({id: user._id}) != undefined )
+            return true;
+    }
+    return false;
+}
+
+function toastError (text) {         
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.error(text);
+}
+
+function toastSuccess (text) {         
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    toastr.success(text);
+}

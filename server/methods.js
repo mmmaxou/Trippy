@@ -25,7 +25,7 @@ Meteor.methods({
         var dirName = city.picture.slice(8, city.picture.lastIndexOf("/"));
         UploadServer.init({
             tmpDir: process.env.PWD + '/.uploads/tmp',
-            uploadDir: process.env.PWD + '/public/images/' + dirName + "/activities/",
+            uploadDir: process.env.PWD + '/public/images/' + dirName,
             checkCreateDirectories: true, //create the directories for you
             finished: function (req) {
                 var fileName = "/images/" + dirName + "/" + req.name;
@@ -43,8 +43,18 @@ Meteor.methods({
                         pictures : fileName
                     }
                 })
-                //Go back home
-                document.location.href = "/";
+                
+                activity.picture = Activities.findOne({
+                    _id : activity._id
+                }).pictures[0]
+                
+                Cities.update({
+                    _id : city._id
+                }, {
+                    $push : {
+                        activities : activity
+                    }
+                })
             }
         });
     },

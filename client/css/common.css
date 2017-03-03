@@ -95,7 +95,10 @@ footer {
 /* TOAST FIX */
 #toast-container.toast-top-full-width {
     width: 100%;
-    height: 100px;
+}
+
+button.toast-close-button {
+    margin-bottom: 0;
 }
 
 /* MEDIA QUERIES */

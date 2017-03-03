@@ -21,6 +21,9 @@
 			<p>Info</p>
 		</div>
 		<div class="wrapperCityDescription">
+            {{#if isAnEvent nature}}
+		    <p><strong>{{dateFormat dateStart}} - {{dateFormat dateEnd}}</strong></p>
+		    {{/if}}
 			<p>{{description}}</p>
             {{#if isAdmin}}
             <button id="descriptionButton" class="btn btn-danger">Edit</button>
@@ -57,10 +60,10 @@
 		</div>
         {{#if isConnected}}
         <div class="commentsAdd">
-            <button class="btnComs" id="commentAdd">Ajouter un commentaire</button>
+            <button class="btn btn-danger" id="commentAdd">Ajouter un commentaire</button>
             <form id="sectionAdd" style="display:none;">
                 <textarea class="" id="comment" name="comment"></textarea><br/>
-                <input  class="btnComs" type="submit" name="submit" value="Comment !" />
+                <input class="btn btn-danger" type="submit" name="submit" value="Comment !" />
             </form>
         </div>
         {{/if}}

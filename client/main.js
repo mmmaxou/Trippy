@@ -27,7 +27,7 @@ Template.home.helpers({
 })
 Template.home.events ({
     'load *': function(){
-        $("#destlink").click(function(){
+        $("#destArrow").click(function(){
             $('html,body').stop(true, false).animate({
                 scrollTop: $("#dest").offset().top
             },1000);
@@ -359,6 +359,12 @@ Template.activities.helpers({
         var activity = this;
         var nb = activity.comments.length;
         return nb;
+    },
+    dateFormat : function (date) {
+        return date.toDateString();
+    },
+    isAnEvent: function(nature){
+        return nature === "event";
     }
 })
 

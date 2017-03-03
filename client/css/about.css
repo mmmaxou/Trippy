@@ -1,3 +1,47 @@
-.about {
-    display: inline;
+#team {
+    z-index: -1;
+    position:absolute;
+    top:0;
+}
+
+#team img {
+    width: 100%;
+}
+
+.aboutPage{
+    color:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%);
+    padding-bottom: 30px;
+}
+
+.aboutPage h3 {
+    font-family: 'Patua One', cursive;
+    margin-bottom: 20px;
+}
+
+.aboutPage span {
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Lobster', cursive;
+    font-size: 28px;
+    color: rgb(234, 90, 85);
+}
+
+.aboutPage{
+    background-color:rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.wrapperContent{
+    position:relative;
+    height:1200px;
+}
+
+.aboutPage p {
+    text-align: justify;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 18px;
 }

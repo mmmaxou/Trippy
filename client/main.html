@@ -80,15 +80,6 @@
             </div>
         </a>
         {{/each}}
-        {{#each c in cities}}
-        <a href="/cities/{{c._id}}">
-            <div class="grid-item" data-like="{{c.like}}" data-comments="{{commentsNumber c.comments}}">
-                <div class="darkerCityPicture"></div>
-                <img class="cityPicture" src="{{c.picture}}" alt="City Picture">
-                <div class="cityName">{{c.name}}</div>
-            </div>
-        </a>
-        {{/each}}
     </div>
 </template>
 

@@ -4,37 +4,46 @@
 			<p class="activitiesHeaderText">{{name}}</p>
 		</div>
 	</div>
+	<div class="likesCommentsCount">
+            {{#if isConnected}}
+            {{#if userAlreadyLiked}}
+            <i class="fa fa-heart likeTrue" id="like" aria-hidden="true"></i>
+            {{else}}
+            <i class="fa fa-heart-o likeFalse" id="like" aria-hidden="true"></i>
+            {{/if}}
+            {{/if}}
+            <div id="likeCount">{{like}}</div>
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            <div id="commentCount">{{commentsNumber}}</div>
+        </div>
 	<div class="info">
 		<div class="wrapperTextTitle">
-			<p>Info & Useful links</p>
+			<p>Info</p>
 		</div>
 		<div class="wrapperCityDescription">
 			<p>{{description}}</p>
             {{#if isAdmin}}
-            <button  id="descriptionButton" class="buttonStyle">Edit</button>
-            <button  id="descriptionButtonCancel" class="buttonStyle" style="display:none;">Cancel</button>
+            <button id="descriptionButton" class="btn btn-danger">Edit</button>
+            <button id="descriptionButtonCancel" class="btn btn-danger" style="display:none;">Cancel</button>
             {{/if}}
 		</div>
 	</div>
 	<div class="gmaps">
 		<div class="wrapperTextTitle">
-			<p>Pictures related</p>
+			<p>Pictures</p>
 		</div>
 		<div class="row">
 			<!-- <div class="col-md-4"> -->
-
 					{{#each c in pictures}}
 					 <img src="{{c}}" alt="{{name}}"/>
 					{{/each}}
 			<!-- </div> -->
 		</div>
-
 	</div>
-
-
+	
 	<div class="comments">
 		<div class="wrapperTextTitle"  id="commentsTitle">
-			<p>Trippy trips</p>
+			<p>Trippy Tips</p>
 		</div>
 		<div class="wrapperComments">
 			{{#each c in comments}}
@@ -56,13 +65,4 @@
         </div>
         {{/if}}
 	</div>
-
-<!--    LIKE BUTTON-->
-    <div class="likeSection">
-        {{#if isConnected}}
-        <button id="like">LIKE THIS PAGE</button>
-        {{/if}}
-        <p>Number of likes : {{like}}</p>
-    </div>
-
 </template>

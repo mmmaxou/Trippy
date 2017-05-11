@@ -39,6 +39,8 @@ if (Meteor.isServer) {
             Meteor.users.remove({});
             Meteor.users.insert(derek);
             Meteor.users.insert(gilles);
+            
+            console.log(Metor.users.find({}))
 
             // *** activities
             // **** LILLE
